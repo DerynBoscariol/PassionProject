@@ -77,13 +77,20 @@ namespace PassionProject.Controllers
         [HttpPost]
         public IHttpActionResult UpdateBartender(int id, Bartender bartender)
         {
+            Debug.WriteLine("I have succesfully reached update bartender method!");
+
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("Model State is invalid");
                 return BadRequest(ModelState);
             }
 
             if (id != bartender.bartenderId)
             {
+                Debug.WriteLine("ID mismatch");
+                Debug.WriteLine("Get parameter" + id);
+                Debug.WriteLine("POST parameter" + bartender.bartenderId);
+                Debug.WriteLine("POST parameter" + bartender.firstName);
                 return BadRequest();
             }
 
@@ -97,6 +104,7 @@ namespace PassionProject.Controllers
             {
                 if(!BartenderExists(id))
                 {
+                    Debug.WriteLine("Bartender Not Found");
                     return NotFound();
                 }
                 else
@@ -104,6 +112,8 @@ namespace PassionProject.Controllers
                     throw;
                 }
             }
+
+            Debug.WriteLine("No conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
     }
