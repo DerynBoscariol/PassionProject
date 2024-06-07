@@ -23,5 +23,22 @@ namespace PassionProject.Models
         public int bartenderId { get; set; }
         public virtual Bartender Bartender { get; set; }
     }
+
+    //Data transfer object (DTO) - Communicating the bartenders info externally
+    public class CocktailDto
+    {
+        public int drinkId { get; set; }
+        public string drinkName { get; set; }
+        public string drinkType { get; set; }
+        public string drinkRecipe { get; set; }
+        public string liqIn { get; set; }
+        public string mixIn { get; set; }
+        public DateTime datePosted { get; set; }
+        public int bartenderId { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+
+    }
 }
+
 

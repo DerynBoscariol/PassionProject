@@ -19,5 +19,15 @@ namespace PassionProject.Models
         public DateTime lastDrink { get; set; }
     }
 
-    //Representing bartender in database
+    //Data transfer object (DTO) - Communicating the bartenders info externally
+    public class BartenderDto
+    {
+        public int bartenderId { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string email { get; set; }
+        public int numDrinks { get; set; }
+        public DateTime lastDrink { get; set; }
+
+    }
 }
