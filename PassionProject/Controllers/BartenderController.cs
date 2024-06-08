@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Web.Script.Serialization;
 using PassionProject.Models;
 using System.Security.Cryptography.X509Certificates;
+using PassionProject.Models.ViewModels;
 
 namespace PassionProject.Controllers
 {
@@ -41,10 +42,11 @@ namespace PassionProject.Controllers
             return View(bartenders);
         }
 
-        //GET: Bartender/Info/id
+        //GET: Bartender/Details/id
 
-        public ActionResult Info(int id)
+        public ActionResult Details(int id)
         {
+            DetailsBartender ViewModel = new DetailsBartender();
             //communicate with bartender data controller to retrieve all information about 1 bartender
 
             string url = "FindBartender/" + id;
@@ -53,11 +55,21 @@ namespace PassionProject.Controllers
             Debug.WriteLine("Response code: ");
             Debug.WriteLine(responseMessage.StatusCode);
 
-            BartenderDto selectedBartender = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
+            BartenderDto SelectedBartender = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
             Debug.WriteLine("Bartender received: ");
-            Debug.WriteLine(selectedBartender.firstName + " " + selectedBartender.lastName);
+            Debug.WriteLine(SelectedBartender.firstName + " " + SelectedBartender.lastName);
 
-            return View(selectedBartender);
+            ViewModel.SelectedBartender = SelectedBartender;
+
+            //Show drinks made by this bartender
+
+            url = "cocktaildata/listCocktailsByBartender/" + id;
+            responseMessage = client.GetAsync(url).Result;
+            IEnumerable<CocktailDto> CocktailsMade = responseMessage.Content.ReadAsAsync<IEnumerable<CocktailDto>>().Result;
+
+            ViewModel.CocktailsMade = CocktailsMade;
+
+            return View(ViewModel);
 
         }
 
@@ -151,8 +163,6 @@ namespace PassionProject.Controllers
         //GET: Bartender/Delete/id
         public ActionResult Delete(int id, FormCollection collection) 
         {
-          
-           //Add delete logic
            string url = "bartenderData/DeleteBartender/" + id;
            HttpContent content = new StringContent("");
            content.Headers.ContentType.MediaType = "application/json";
