@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
 using PassionProject.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PassionProject.Controllers
 {
@@ -85,7 +86,87 @@ namespace PassionProject.Controllers
             Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
 
+            HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        //GET: bartender/edit/id
+        public ActionResult Edit(int id)
+        {
+            string url = "findBartender/" + id;
+            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+
+            Debug.WriteLine("Response code: ");
+            Debug.WriteLine(responseMessage.StatusCode);
+
+            BartenderDto selectedBartender = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
+
+            Debug.WriteLine("Bartender received: ");
+            Debug.WriteLine(selectedBartender.firstName + " " + selectedBartender.lastName);
+
+            return View(selectedBartender);
+        }
+
+        //POST: Bartender/Update/id
+        [HttpPost]
+        public ActionResult Update(int id, Bartender bartender)
+        {
+            try
+            {
+                Debug.WriteLine("The new bartender info is:");
+                Debug.WriteLine("Name: " + bartender.firstName + " " + bartender.lastName);
+                Debug.WriteLine("Email: " + bartender.email);
+                Debug.WriteLine("Number of Drinks Made: " + bartender.numDrinks);
+                Debug.WriteLine("Last Drink Made: " + bartender.lastDrink);
+
+                string url = "UpdateBartender/" + id;
+                string jsonpayload = serializer.Serialize(bartender);
+                Debug.WriteLine(jsonpayload);
+
+                HttpContent content = new StringContent(jsonpayload);
+                content.Headers.ContentType.MediaType = "application/json";
+
+                //POST: api/BartenderData/UpdateBartender/{id}
+                //Header : Content-Type: application/json
+                //
+                HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
+
+                return RedirectToAction("Details/" + id);
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        //GET: Bartender/Delete/id
+        public ActionResult Delete(int id, FormCollection collection) 
+        {
+          
+           //Add delete logic
+           string url = "bartenderData/DeleteBartender/" + id;
+           HttpContent content = new StringContent("");
+           content.Headers.ContentType.MediaType = "application/json";
+           HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
+
+             if (responseMessage.IsSuccessStatusCode)
+             {
+              return RedirectToAction("List");
+             }
+              else
+            {
+              return RedirectToAction("Error");
+            }
+                
         }
     }
 }
