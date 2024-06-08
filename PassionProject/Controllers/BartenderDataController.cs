@@ -101,6 +101,7 @@ namespace PassionProject.Controllers
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
+
             {
                 if(!BartenderExists(id))
                 {
@@ -116,5 +117,56 @@ namespace PassionProject.Controllers
             Debug.WriteLine("No conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+
+        // POST: api/BartenderData/AddBartender
+        [ResponseType(typeof(Bartender))]
+        [HttpPost]
+        public IHttpActionResult AddBartender(Bartender bartender)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Bartenders.Add(bartender);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        // POST: api/BartenderData/DeleteBartender
+
+        [ResponseType(typeof(Bartender))]
+        [HttpPost]
+        public IHttpActionResult DeleteBartender(int id)
+        {
+            Bartender bartender = db.Bartenders.Find(id);
+
+            if (bartender == null)
+            {
+                return NotFound();
+            }
+
+            db.Bartenders.Remove(bartender);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool BartenderExists(int id) 
+        {
+            return db.Bartenders.Count(e => e.bartenderId == id) > 0;
+        }
+
     }
 }
