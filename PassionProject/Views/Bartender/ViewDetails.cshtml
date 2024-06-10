@@ -1,0 +1,41 @@
+﻿@model PassionProject.Models.ViewModels.DetailsBartender
+
+@{
+    ViewBag.Title = "View";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Details</title>
+</head>
+<body>
+    <div>
+        <h3>Bartender Details</h3>
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+    </div>
+    <p>
+        <a href="/Bartender/List">Go back to list</a>
+        <br />
+        <a href="/Bartender/Edit/@Model.SelectedBartender.bartenderId">Update</a>
+        <br />
+        <a style="color:#ab2020;" href="/Bartender/DeleteConfirm/@Model.SelectedBartender.bartenderId">Delete</a>
+        <h2>@Model.SelectedBartender.firstName @Model.SelectedBartender.lastName</h2>
+        <div>Email: @Model.SelectedBartender.email</div>
+        <div>Number of drinks: @Model.SelectedBartender.numDrinks</div>
+        <div>Last drink made: @Model.SelectedBartender.lastDrink</div>
+    </p>
+    <div>
+        <h3>Cocktails made by @Model.SelectedBartender.firstName @Model.SelectedBartender.lastName</h3>
+        @foreach (var drink in Model.CocktailsMade)
+        {
+
+            <a href="/Cocktail/Details/@drink.drinkId">@drink.drinkName</a>
+        }
+    </div>
+</body>
+</html>

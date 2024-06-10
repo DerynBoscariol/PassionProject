@@ -29,7 +29,7 @@ namespace PassionProject.Controllers
         {
             //communicate with bartender data controller to retrieve list of bartenders
 
-            string url = "ListBartenders";
+            string url = "BartenderData/ListBartenders";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
             Debug.WriteLine("Response code: ");
@@ -49,7 +49,7 @@ namespace PassionProject.Controllers
             DetailsBartender ViewModel = new DetailsBartender();
             //communicate with bartender data controller to retrieve all information about 1 bartender
 
-            string url = "FindBartender/" + id;
+            string url = "BartenderData/FindBartender/" + id;
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
             Debug.WriteLine("Response code: ");
