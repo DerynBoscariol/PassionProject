@@ -30,11 +30,12 @@ namespace PassionProject.Controllers
         [ResponseType(typeof(CocktailDto))]
         public IHttpActionResult ListCocktails()
         {
+            //fetch cocktails from database and store them in a list
             List<Cocktail> Cocktails = db.Cocktails.ToList();
-
+            //create a list of cocktails as data tranferable objects
             List<CocktailDto> CocktailDtos = new List<CocktailDto>();
 
-
+            //convert each cocktail entity into a cocktaildto and add to the list
             Cocktails.ForEach(c => CocktailDtos.Add(new CocktailDto()
             {
                 drinkId = c.drinkId,
@@ -46,7 +47,7 @@ namespace PassionProject.Controllers
                 datePosted = c.datePosted,
                 bartenderId = c.bartenderId
             }));
-
+            Debug.WriteLine(CocktailDtos);
             return Ok(CocktailDtos);
         }
 
@@ -65,7 +66,7 @@ namespace PassionProject.Controllers
         [ResponseType(typeof(CocktailDto))]
         public IHttpActionResult ListCocktailsByBartender(int id)
         {
-            List<Cocktail> Cocktails = db.Cocktails.Where(b => b.bartenderId == id).ToList();
+            List<Cocktail> Cocktails = db.Cocktails.Where(c => c.bartenderId == id).ToList();
             List<CocktailDto> CocktailDtos = new List<CocktailDto>();
 
             Cocktails.ForEach(c => CocktailDtos.Add(new CocktailDto()

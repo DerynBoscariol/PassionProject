@@ -35,12 +35,16 @@ namespace PassionProject.Controllers
         {
             //communicate with cocktail data controller to retrieve list of cocktails
 
+            //Send GET request to api
             string url = "CocktailData/ListCocktails";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
+            //logging the response
             Debug.WriteLine("Response code: ");
             Debug.WriteLine(responseMessage.StatusCode);
+            Debug.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
 
+            //deserialize json response content into an IEnumerable<CocktailDTo>
             IEnumerable<CocktailDto> cocktails = responseMessage.Content.ReadAsAsync<IEnumerable<CocktailDto>>().Result;
             Debug.WriteLine("Number of cocktails: ");
             Debug.WriteLine(cocktails.Count());
