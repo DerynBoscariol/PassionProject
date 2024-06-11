@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create a Bartender</title>
+</head>
+<body>
+    <h1>Create a Bartender</h1>
+    <form action="/Bartender/Create" method="POST">
+        <div>
+            <label>First Name:</label> <input type="text" name="firstName" />
+        </div>
+        <div>
+            <label>Last Name:</label> <input type="text" name="lastName" />
+        </div>
+        <div>
+            <label>Email:</label> <input type="text" name="email" />
+        </div>
+        <div>
+            <label>Number of Cocktails Created:</label> <input type="number" name="numDrinks" />
+        </div>
+        <div>
+            <label>Date of Last Cocktail Created:</label> <input type="date" name="lastDrink" />
+        </div>
+        <div>
+            <input type="submit" value="Create Bartender" />
+
+        </div>
+    </form>
+</body>
+</html>

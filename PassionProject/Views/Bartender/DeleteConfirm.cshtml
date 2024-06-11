@@ -1,0 +1,23 @@
+﻿@model PassionProject.Models.BartenderDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete Confirm</title>
+</head>
+<body>
+    <div>
+        <h2>Are you sure you want to delete this Bartender?</h2>
+        <a href="/Bartender/List">Cancel</a>
+        <h3>Name: @Model.firstName @Model.lastName</h3>
+        <form action="/Bartender/Delete/@Model.bartenderId" method="POST">
+            <input type="submit" value="Confirm Delete" />
+        </form>
+    </div>
+</body>
+</html>
