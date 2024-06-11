@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
 using PassionProject.Models;
-using System.Security.Cryptography.X509Certificates;
 using PassionProject.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace PassionProject.Controllers
 {
@@ -20,14 +20,10 @@ namespace PassionProject.Controllers
 
         static CocktailController()
         {
-            HttpClientHandler handler = new HttpClientHandler()
+            client = new HttpClient
             {
-                AllowAutoRedirect = false,
-                UseCookies = false
+                BaseAddress = new Uri("https://localhost:44307/api/")
             };
-
-            client = new HttpClient(handler);
-            client.BaseAddress = new Uri("https://localhost:44307/api/");
         }
 
         //GET: Cocktail/List
@@ -45,7 +41,8 @@ namespace PassionProject.Controllers
             Debug.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
 
             //deserialize json response content into an IEnumerable<CocktailDTo>
-            IEnumerable<CocktailDto> cocktails = responseMessage.Content.ReadAsAsync<IEnumerable<CocktailDto>>().Result;
+            string jsonResponse = responseMessage.Content.ReadAsStringAsync().Result;
+            IEnumerable<CocktailDto> cocktails = JsonConvert.DeserializeObject<IEnumerable<CocktailDto>>(jsonResponse);
             Debug.WriteLine("Number of cocktails: ");
             Debug.WriteLine(cocktails.Count());
 

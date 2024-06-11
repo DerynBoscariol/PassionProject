@@ -45,6 +45,12 @@ namespace PassionProject.Controllers
         public IHttpActionResult FindBartender(int id) 
         {
             Bartender Bartender = db.Bartenders.Find(id);
+
+            if (Bartender == null)
+            {
+                return NotFound();
+            }
+
             BartenderDto BartenderDto = new BartenderDto()
             {
                 bartenderId = Bartender.bartenderId,
@@ -54,11 +60,6 @@ namespace PassionProject.Controllers
                 numDrinks = Bartender.numDrinks,
                 lastDrink = Bartender.lastDrink
             };
-
-            if(Bartender == null)
-            {
-                return NotFound();
-            }
 
             return Ok(BartenderDto);
         }

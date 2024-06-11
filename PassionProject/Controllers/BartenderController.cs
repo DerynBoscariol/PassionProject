@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using System.Net.Http;
-using System.Diagnostics;
+using System.Web.Mvc;
+using Newtonsoft.Json;
 using PassionProject.Models;
 using PassionProject.Models.ViewModels;
+using System.Diagnostics;
+using System.Web.Script.Serialization;
 
 namespace PassionProject.Controllers
 {
@@ -18,19 +17,32 @@ namespace PassionProject.Controllers
 
         static BartenderController()
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44307/api/");
+            client = new HttpClient
+            {
+                BaseAddress = new Uri("https://localhost:44307/api/")
+            };
         }
 
-        //GET: bartender/List
-        public ActionResult List() 
+        // GET: bartender/List
+        public ActionResult List()
         {
             string url = "BartenderData/ListBartenders";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            Debug.WriteLine(responseMessage);
 
-            IEnumerable<BartenderDto> Bartenders = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                // Log error details
+                string error = responseMessage.Content.ReadAsStringAsync().Result;
+                Debug.WriteLine(error);
+                return RedirectToAction("Error", new { message = error });
+            }
 
-            return View(Bartenders);
+            // Deserialize the response as a list of BartenderDto
+            string jsonResponse = responseMessage.Content.ReadAsStringAsync().Result;
+            IEnumerable<BartenderDto> bartenders = JsonConvert.DeserializeObject<IEnumerable<BartenderDto>>(jsonResponse);
+
+            return View(bartenders);
         }
 
         //Get: Bartender/Details/id
