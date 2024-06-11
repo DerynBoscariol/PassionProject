@@ -35,8 +35,6 @@ namespace PassionProject.Models
         public string mixIn { get; set; }
         public DateTime datePosted { get; set; }
         public int bartenderId { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
 
     }
 }

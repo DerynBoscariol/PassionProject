@@ -31,12 +31,12 @@ namespace PassionProject.Controllers
         public IHttpActionResult ListCocktails()
         {
             //fetch cocktails from database and store them in a list
-            List<Cocktail> Cocktails = db.Cocktails.ToList();
+            List<Cocktail> cocktails = db.Cocktails.ToList();
             //create a list of cocktails as data tranferable objects
-            List<CocktailDto> CocktailDtos = new List<CocktailDto>();
+            List<CocktailDto> cocktailDtos = new List<CocktailDto>();
 
             //convert each cocktail entity into a cocktaildto and add to the list
-            Cocktails.ForEach(c => CocktailDtos.Add(new CocktailDto()
+            cocktails.ForEach(c => cocktailDtos.Add(new CocktailDto()
             {
                 drinkId = c.drinkId,
                 drinkName = c.drinkName,
@@ -47,8 +47,8 @@ namespace PassionProject.Controllers
                 datePosted = c.datePosted,
                 bartenderId = c.bartenderId
             }));
-            Debug.WriteLine(CocktailDtos);
-            return Ok(CocktailDtos);
+            Debug.WriteLine(cocktailDtos);
+            return Ok(cocktailDtos);
         }
 
         /// <summary>
@@ -62,6 +62,7 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
         /// </example>
+        /*
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
         public IHttpActionResult ListCocktailsByBartender(int id)
@@ -82,7 +83,7 @@ namespace PassionProject.Controllers
             }));
 
             return Ok(CocktailDtos);
-        }
+        } */
 
         [ResponseType(typeof(Cocktail))]
         [HttpGet]
@@ -173,7 +174,7 @@ namespace PassionProject.Controllers
             return Ok();
         }
 
-        // POST: api/CocktailData/DeleteCocktail
+        // POST: api/CocktailData/DeleteCocktail/id
 
         [ResponseType(typeof(Cocktail))]
         [HttpPost]

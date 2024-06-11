@@ -39,8 +39,7 @@ namespace PassionProject.Controllers
             }
 
             // Deserialize the response as a list of BartenderDto
-            string jsonResponse = responseMessage.Content.ReadAsStringAsync().Result;
-            IEnumerable<BartenderDto> bartenders = JsonConvert.DeserializeObject<IEnumerable<BartenderDto>>(jsonResponse);
+            IEnumerable<BartenderDto> bartenders = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
 
             return View(bartenders);
         }

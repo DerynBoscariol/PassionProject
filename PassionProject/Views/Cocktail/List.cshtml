@@ -3,21 +3,10 @@
     ViewBag.Title = "List";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cocktail List</title>
-</head>
-<body>
-    <div>
         <h2>List of Cocktails</h2>
         <a href="/Cocktail/New">Add a New Cocktail</a>
         @foreach (var cocktail in Model)
         {
             <h3><a href="/Cocktail/Details/@cocktail.drinkId">@cocktail.drinkName</a></h3>
         }
-    </div>
-</body>
-</html>
+   

@@ -41,6 +41,7 @@ namespace PassionProject.Controllers
 
         //GET: api/BartenderData/FindBartender/id
         [HttpGet]
+        [Route("api/bartenderdata/findbartender/{id}")]
         [ResponseType(typeof(BartenderDto))]
         public IHttpActionResult FindBartender(int id) 
         {
