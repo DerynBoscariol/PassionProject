@@ -1,0 +1,36 @@
+﻿@model PassionProject.Models.ViewModels.DetailsCocktail
+
+@{
+    ViewBag.Title = "View";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Cocktail Details</title>
+</head>
+<body>
+    <div>
+        <h3>Cocktail Details</h3>
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+    </div>
+    <p>
+        <a href="/Cocktail/List">Go back to list</a>
+        <br />
+        <a href="/Cocktail/Edit/@Model.SelectedCocktail.drinkId">Update</a>
+        <br />
+        <a href="/Cocktail/DeleteConfirm/@Model.SelectedCocktail.drinkId">Delete</a>
+        <h2>@Model.SelectedCocktail.drinkName</h2>
+        <div>Cocktail Type: @Model.SelectedCocktail.drinkType</div>
+        <div>Created By: @Model.SelectedCocktail.firstName   @Model.SelectedCocktail.lastName</div>
+        <div>Alcoholic Ingredients: @Model.SelectedCocktail.liqIn</div>
+        <div>Mix Ingredients: @Model.SelectedCocktail.mixIn</div>
+        <div>Recipe: @Model.SelectedCocktail.drinkRecipe</div>
+        <div>Cretaed: @Model.SelectedCocktail.datePosted</div>
+    </p>
+</body>
+</html>

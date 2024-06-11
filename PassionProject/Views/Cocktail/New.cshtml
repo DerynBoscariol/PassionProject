@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add a Cocktail</title>
+</head>
+<body>
+    <div>
+        <h2>Add a Cocktail</h2>
+        <form action="/Cocktail/Create" method="POST">
+            <div>
+                <label>Cocktail Name:</label> <input type="text" name="drinkName" />
+            </div>
+            <div>
+                <label>Cocktail Type:</label> <input type="text" name="drinkType" />
+            </div>
+            <div>
+                <label>Recipe:</label> <input type="text" name="drinkRecipe" />
+            </div>
+            <div>
+                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" />
+            </div>
+            <div>
+                <label>Mix Ingredients:</label> <input type="text" name="mixIn" />
+            </div>
+            <div>
+                <label>Date Created:</label> <input type="text" name="datePosted" />
+            </div>
+            <div>
+                <label>Bartender:</label>
+                <select name="bartenderId">
+                    @foreach (var bartender in Model)
+                    {
+                        <option value="@bartender.bartenderId">@bartender.firstName @bartender.lastName</option>
+
+                    }
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="Add Cocktail" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

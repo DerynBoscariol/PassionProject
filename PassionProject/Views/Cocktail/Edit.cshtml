@@ -1,0 +1,56 @@
+﻿@model PassionProject.Models.ViewModels.UpdateCocktail
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Cocktail</title>
+</head>
+<body>
+    <div>
+        <h2>Update Cocktail</h2>
+        <form action="/Cocktail/Update/@Model.SelectedCocktail.drinkId" method="POST">
+            <div style="display:none;">
+                <input type="text" name="drinkId" value="@Model.SelectedCocktail.drinkId" />
+            </div>
+            <div>
+                <label>Cocktail Name:</label> <input type="text" name="drinkName" />
+            </div>
+            <div>
+                <label>Cocktail Type:</label> <input type="text" name="drinkType" />
+            </div>
+            <div>
+                <label>Drink Recipe:</label> <input type="text" name="drinkRecipe" />
+            </div>
+            <div>
+                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" />
+            </div>
+            <div>
+                <label>Mix Ingredients:</label> <input type="text" name="mixIn" />
+            </div>
+            <div>
+                <label>Date Created:</label> <input type="date" name="datePosted" />
+            </div>
+            <div>
+                <label>Bartender:</label>
+
+                <select name="bartenderId">
+                    @foreach (var bartender in Model.BartenderCreated)
+                    {
+                        <option value="@bartender.bartenderId">@bartender.firstName @bartender.lastName</option>
+
+                    }
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="Update Cocktail" />
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>

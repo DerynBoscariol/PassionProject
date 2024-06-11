@@ -3,54 +3,39 @@
   "WorkspaceRootPath": "C:\\Users\\deryn\\source\\repos\\PassionProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\bartendercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\bartendercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\cocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\cocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Cocktails.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\updatecocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\updatecocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\bartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\bartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderDataController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:PassionProject\\Controllers\\BartenderDataController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\updatebartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\updatebartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\deleteconfirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\deleteconfirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Bartenders.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\bartender\\viewdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\bartender\\viewdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Cocktails.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\detailsbartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\detailsbartender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\deleteconfirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\deleteconfirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,7 +45,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -68,165 +53,116 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Bartender.cs",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Bartender.cs",
-              "RelativeDocumentMoniker": "PassionProject\\Models\\Bartender.cs",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Bartender.cs",
-              "RelativeToolTip": "PassionProject\\Models\\Bartender.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:33:16.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BartenderController.cs",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderController.cs",
-              "RelativeDocumentMoniker": "PassionProject\\Controllers\\BartenderController.cs",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderController.cs",
-              "RelativeToolTip": "PassionProject\\Controllers\\BartenderController.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAwDMAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:29:49.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\Edit.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\Edit.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\Edit.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T20:18:55.005Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UpdateBartender.cs",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\UpdateBartender.cs",
-              "RelativeDocumentMoniker": "PassionProject\\Models\\ViewModels\\UpdateBartender.cs",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\UpdateBartender.cs",
-              "RelativeToolTip": "PassionProject\\Models\\ViewModels\\UpdateBartender.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T20:15:35.912Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DeleteConfirm.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\DeleteConfirm.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\DeleteConfirm.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\DeleteConfirm.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\DeleteConfirm.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T20:09:21.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\Error.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\Error.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\Error.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\Error.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T20:07:08.354Z",
+              "DocumentIndex": 2,
+              "Title": "dbo.Cocktails [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Cocktails.sql",
+              "ToolTip": "dbo.Cocktails [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-11T01:28:12.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "New.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\New.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\New.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\New.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\New.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAgAAAA",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\New.cshtml",
+              "RelativeDocumentMoniker": "PassionProject\\Views\\Cocktail\\New.cshtml",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\New.cshtml",
+              "RelativeToolTip": "PassionProject\\Views\\Cocktail\\New.cshtml",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAowCsAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T20:00:37.717Z",
+              "WhenOpened": "2024-06-11T00:09:42.018Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BartenderDataController.cs",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderDataController.cs",
-              "RelativeDocumentMoniker": "PassionProject\\Controllers\\BartenderDataController.cs",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderDataController.cs",
-              "RelativeToolTip": "PassionProject\\Controllers\\BartenderDataController.cs",
-              "ViewState": "AQIAAHwAAAAAAAAAAAA5wJAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "Cocktail.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Cocktail.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Models\\Cocktail.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Cocktail.cs",
+              "RelativeToolTip": "PassionProject\\Models\\Cocktail.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwBkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-07T20:55:44.218Z",
+              "WhenOpened": "2024-06-10T23:56:30.221Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\List.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\List.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\List.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\List.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T19:52:36.162Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "dbo.Bartenders [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Bartenders.sql",
-              "ToolTip": "dbo.Bartenders [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-06-10T19:44:07.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ViewDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\ViewDetails.cshtml",
-              "RelativeDocumentMoniker": "PassionProject\\Views\\Bartender\\ViewDetails.cshtml",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Bartender\\ViewDetails.cshtml",
-              "RelativeToolTip": "PassionProject\\Views\\Bartender\\ViewDetails.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T19:36:45.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DetailsBartender.cs",
-              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsBartender.cs",
-              "RelativeDocumentMoniker": "PassionProject\\Models\\ViewModels\\DetailsBartender.cs",
-              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsBartender.cs",
-              "RelativeToolTip": "PassionProject\\Models\\ViewModels\\DetailsBartender.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
+              "DocumentIndex": 4,
+              "Title": "DetailsCocktail.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
+              "RelativeToolTip": "PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T22:10:31.264Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "dbo.Cocktails [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_PassionProject_20240605101856/True/SqlTable/dbo.Cocktails.sql",
-              "ToolTip": "dbo.Cocktails [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-06-10T19:47:18.377Z",
+              "DocumentIndex": 6,
+              "Title": "UpdateCocktail.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\UpdateCocktail.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Models\\ViewModels\\UpdateCocktail.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\UpdateCocktail.cs",
+              "RelativeToolTip": "PassionProject\\Models\\ViewModels\\UpdateCocktail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T20:15:35.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CocktailController.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailController.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Controllers\\CocktailController.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailController.cs",
+              "RelativeToolTip": "PassionProject\\Controllers\\CocktailController.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAADwvykAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T20:29:49.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CocktailDataController.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailDataController.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Controllers\\CocktailDataController.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailDataController.cs",
+              "RelativeToolTip": "PassionProject\\Controllers\\CocktailDataController.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAwDEAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T20:55:44.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Bartender.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Bartender.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Models\\Bartender.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Bartender.cs",
+              "RelativeToolTip": "PassionProject\\Models\\Bartender.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T20:33:16.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeleteConfirm.cshtml",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\DeleteConfirm.cshtml",
+              "RelativeDocumentMoniker": "PassionProject\\Views\\Cocktail\\DeleteConfirm.cshtml",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\DeleteConfirm.cshtml",
+              "RelativeToolTip": "PassionProject\\Views\\Cocktail\\DeleteConfirm.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-10T20:09:21.524Z",
               "EditorCaption": ""
             }
           ]
