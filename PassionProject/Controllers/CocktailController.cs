@@ -105,7 +105,7 @@ namespace PassionProject.Controllers
             Debug.WriteLine("Json payload: ");
             Debug.WriteLine(cocktail.drinkId + " " + cocktail.drinkName);
 
-            string url = "AddCocktail";
+            string url = "https://localhost:44307/api/cocktaildata/addcocktail";
 
             string jsonpayload = serializer.Serialize(cocktail);
 
@@ -121,6 +121,7 @@ namespace PassionProject.Controllers
             }
             else
             {
+                Debug.WriteLine(responseMessage);
                 return RedirectToAction("Error");
             }
         }
@@ -128,18 +129,28 @@ namespace PassionProject.Controllers
         //GET: cocktail/edit/id
         public ActionResult Edit(int id)
         {
-            string url = "findCocktail/" + id;
+            UpdateCocktail ViewModel = new UpdateCocktail();
+
+            string url = "https://localhost:44307/api/cocktaildata/findcocktail/" + id;
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
             Debug.WriteLine("Response code: ");
             Debug.WriteLine(responseMessage.StatusCode);
 
             CocktailDto selectedCocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
+            ViewModel.SelectedCocktail = selectedCocktail;
 
             Debug.WriteLine("Cocktail received: ");
-            Debug.WriteLine(selectedCocktail.drinkId + " " + selectedCocktail.drinkName);
+            Debug.WriteLine(selectedCocktail);
 
-            return View(selectedCocktail);
+            string durl = "https://localhost:44307/api/bartenderdata/listbartenders";
+            responseMessage = client.GetAsync(durl).Result;
+            IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
+
+            ViewModel.BartenderCreated = BartenderOptions;
+
+
+            return View(ViewModel);
         }
 
         //POST: Cocktail/Update/id

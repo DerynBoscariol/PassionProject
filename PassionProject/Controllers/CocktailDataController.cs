@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Diagnostics;
+using PassionProject.Migrations;
 
 namespace PassionProject.Controllers
 {
@@ -62,9 +63,10 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
         /// </example>
-        /*
+        
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
+        [Route("api/cocktaildata/listcocktailsbybartender/{id}")]
         public IHttpActionResult ListCocktailsByBartender(int id)
         {
             List<Cocktail> Cocktails = db.Cocktails.Where(c => c.bartenderId == id).ToList();
@@ -83,7 +85,7 @@ namespace PassionProject.Controllers
             }));
 
             return Ok(CocktailDtos);
-        } */
+        } 
 
         [ResponseType(typeof(Cocktail))]
         [HttpGet]
@@ -156,6 +158,25 @@ namespace PassionProject.Controllers
             Debug.WriteLine("No conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
+        //POST: associate/drinkid/bartenderid
+        [HttpPost]
+        [Route("api/cocktailData/Associate/{drinkId}/{bartenderId}")]
+        public IHttpActionResult Associate(int drinkId, int bartenderId)
+        {
+
+            Cocktail SelectedCocktail = db.Cocktails.Where(c => c.drinkId == drinkId).FirstOrDefault();
+            Bartender SelectedBartender = db.Bartenders.Find(bartenderId);
+
+            if (SelectedBartender == null)
+            {
+                return NotFound();
+            }
+
+            SelectedCocktail.Bartender = SelectedBartender;
+            db.SaveChanges();
+
+            return Ok();
+        }
 
 
         // POST: api/CocktailData/AddCocktail
@@ -163,6 +184,10 @@ namespace PassionProject.Controllers
         [HttpPost]
         public IHttpActionResult AddCocktail(Cocktail cocktail)
         {
+            cocktail.bartenderId = cocktail.Bartender.bartenderId;
+            Associate(cocktail.drinkId, cocktail.bartenderId);
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -171,7 +196,7 @@ namespace PassionProject.Controllers
             db.Cocktails.Add(cocktail);
             db.SaveChanges();
 
-            return Ok();
+            return CreatedAtRoute("DefaultApi", new { id = cocktail.drinkId }, cocktail);
         }
 
         // POST: api/CocktailData/DeleteCocktail/id

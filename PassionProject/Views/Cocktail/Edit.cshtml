@@ -3,42 +3,33 @@
     ViewBag.Title = "Edit";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit Cocktail</title>
-</head>
-<body>
-    <div>
         <h2>Update Cocktail</h2>
         <form action="/Cocktail/Update/@Model.SelectedCocktail.drinkId" method="POST">
             <div style="display:none;">
                 <input type="text" name="drinkId" value="@Model.SelectedCocktail.drinkId" />
             </div>
             <div>
-                <label>Cocktail Name:</label> <input type="text" name="drinkName" />
+                <label>Cocktail Name:</label> <input type="text" name="drinkName" value="@Model.SelectedCocktail.drinkName" />
             </div>
             <div>
-                <label>Cocktail Type:</label> <input type="text" name="drinkType" />
+                <label>Cocktail Type:</label> <input type="text" name="drinkType" value="@Model.SelectedCocktail.drinkType"/>
             </div>
             <div>
-                <label>Drink Recipe:</label> <input type="text" name="drinkRecipe" />
+                <label>Drink Recipe:</label> <input type="text" name="drinkRecipe" value="@Model.SelectedCocktail.drinkRecipe" />
             </div>
             <div>
-                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" />
+                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" value="@Model.SelectedCocktail.liqIn"/>
             </div>
             <div>
-                <label>Mix Ingredients:</label> <input type="text" name="mixIn" />
+                <label>Mix Ingredients:</label> <input type="text" name="mixIn" value="@Model.SelectedCocktail.mixIn" />
             </div>
             <div>
-                <label>Date Created:</label> <input type="date" name="datePosted" />
+                <label>Date Created:</label> <input type="date" name="datePosted" value="@Model.SelectedCocktail.datePosted" />
             </div>
             <div>
                 <label>Bartender:</label>
-
-                <select name="bartenderId">
+                <select name="bartenderId" >
+                    <option value="@Model.SelectedCocktail.bartenderId">@Model.SelectedCocktail.firstName @Model.SelectedCocktail.lastName</option>
                     @foreach (var bartender in Model.BartenderCreated)
                     {
                         <option value="@bartender.bartenderId">@bartender.firstName @bartender.lastName</option>
@@ -51,6 +42,3 @@
 
             </div>
         </form>
-    </div>
-</body>
-</html>

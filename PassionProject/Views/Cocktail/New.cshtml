@@ -1,17 +1,8 @@
-﻿
+﻿@model IEnumerable<PassionProject.Models.BartenderDto>
 @{
     ViewBag.Title = "Create";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add a Cocktail</title>
-</head>
-<body>
-    <div>
         <h2>Add a Cocktail</h2>
         <form action="/Cocktail/Create" method="POST">
             <div>
@@ -33,19 +24,11 @@
                 <label>Date Created:</label> <input type="text" name="datePosted" />
             </div>
             <div>
-                <label>Bartender:</label>
-                <select name="bartenderId">
-                    @foreach (var bartender in Model)
-                    {
-                        <option value="@bartender.bartenderId">@bartender.firstName @bartender.lastName</option>
+                <label>Select Bartender</label>
 
-                    }
-                </select>
             </div>
             <div>
                 <input type="submit" value="Add Cocktail" />
             </div>
         </form>
-    </div>
-</body>
-</html>
+    
