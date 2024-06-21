@@ -1,15 +1,12 @@
-﻿using System;
+﻿using PassionProject.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using PassionProject.Models;
-using System.Diagnostics;
 
 
 namespace PassionProject.Controllers
@@ -42,9 +39,10 @@ namespace PassionProject.Controllers
         [HttpGet]
         [Route("api/bartenderdata/findbartender/{id}")]
         [ResponseType(typeof(BartenderDto))]
-        public IHttpActionResult FindBartender(int id) 
+        public IHttpActionResult FindBartender(int id)
         {
             Bartender Bartender = db.Bartenders.Find(id);
+            Debug.WriteLine(Bartender);
 
             if (Bartender == null)
             {
@@ -122,7 +120,7 @@ namespace PassionProject.Controllers
         public IHttpActionResult DeleteBartender(int id)
         {
             Bartender Bartender = db.Bartenders.Find(id);
-            if(Bartender == null)
+            if (Bartender == null)
             {
                 return NotFound();
             }

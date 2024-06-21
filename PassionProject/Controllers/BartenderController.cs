@@ -1,32 +1,31 @@
-﻿using System;
+﻿using PassionProject.Models;
+using PassionProject.Models.ViewModels;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-using PassionProject.Models;
-using PassionProject.Models.ViewModels;
-using System.Diagnostics;
 using System.Web.Script.Serialization;
 
 namespace PassionProject.Controllers
 {
     public class BartenderController : Controller
     {
-        private static readonly HttpClient client;
+        private static readonly HttpClient client = new HttpClient();
         private JavaScriptSerializer serializer = new JavaScriptSerializer();
 
+        /*
         static BartenderController()
         {
             client = new HttpClient
             {
                 BaseAddress = new Uri("https://localhost:44307/api/")
             };
-        }
+        } */
 
         // GET: bartender/List
         public ActionResult List()
         {
-            string url = "BartenderData/ListBartenders";
+            string url = "https://localhost:44307/api/BartenderData/ListBartenders";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             Debug.WriteLine(responseMessage);
 
@@ -49,14 +48,14 @@ namespace PassionProject.Controllers
         {
             DetailsBartender ViewModel = new DetailsBartender();
 
-            string url = "bartenderData/FindBartender/" + id;
+            string url = "https://localhost:44307/api/bartenderData/FindBartender/" + id;
             HttpResponseMessage ResponseMessage = client.GetAsync(url).Result;
 
             BartenderDto SelectedBartender = ResponseMessage.Content.ReadAsAsync<BartenderDto>().Result;
 
             ViewModel.SelectedBartender = SelectedBartender;
 
-            url = "cocktaildata/ListCocktailsByBartender/" + id;
+            url = "https://localhost:44307/api/cocktaildata/ListCocktailsByBartender/" + id;
             ResponseMessage = client.GetAsync(url).Result;
 
             IEnumerable<CocktailDto> CocktailsMade = ResponseMessage.Content.ReadAsAsync<IEnumerable<CocktailDto>>().Result;
@@ -74,7 +73,7 @@ namespace PassionProject.Controllers
         public ActionResult New()
         {
 
-            return View(); 
+            return View();
         }
 
         //POST: bartenders/create
@@ -84,7 +83,7 @@ namespace PassionProject.Controllers
             Debug.WriteLine("the json payload is :");
             Debug.WriteLine(Bartender.FirstName + Bartender.LastName);
 
-            string url = "bartenderdata/addBartender";
+            string url = "https://localhost:44307/api/bartenderdata/addBartender";
 
             string jsonpayload = serializer.Serialize(Bartender);
             Debug.WriteLine(jsonpayload);
@@ -106,7 +105,7 @@ namespace PassionProject.Controllers
         //GET: bartender/edit/id
         public ActionResult Edit(int id)
         {
-            string url = "bartenderdata/findbartender/" + id;
+            string url = "https://localhost:44307/api/bartenderdata/findbartender/" + id;
             HttpResponseMessage ResponseMessage = client.GetAsync(url).Result;
             BartenderDto SelectedBartender = ResponseMessage.Content.ReadAsAsync<BartenderDto>().Result;
             return View(SelectedBartender);
@@ -114,9 +113,9 @@ namespace PassionProject.Controllers
 
         //POST: bartender/update/id
         [HttpPost]
-        public ActionResult Update(int id, Bartender Bartender) 
+        public ActionResult Update(int id, Bartender Bartender)
         {
-            string url = "bartenderdata/updateBartender/" + id;
+            string url = "https://localhost:44307/api/bartenderdata/updateBartender/" + id;
             string jsonpayload = serializer.Serialize(Bartender);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -135,7 +134,7 @@ namespace PassionProject.Controllers
         //GET: bartender/delete/id
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "bartenderData/findbartender/" + id;
+            string url = "https://localhost:44307/api/bartenderData/findbartender/" + id;
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             BartenderDto SelectedBartender = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
             return View(SelectedBartender);
@@ -144,7 +143,7 @@ namespace PassionProject.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "bartenderdata/deleteBartender/" + id;
+            string url = "https://localhost:44307/api/bartenderdata/deleteBartender/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;

@@ -1,8 +1,7 @@
 ﻿namespace PassionProject.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class bartenderForeignKey : DbMigration
     {
         public override void Up()
@@ -11,7 +10,7 @@
             CreateIndex("dbo.Cocktails", "bartenderId");
             AddForeignKey("dbo.Cocktails", "bartenderId", "dbo.Bartenders", "bartenderId", cascadeDelete: true);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Cocktails", "bartenderId", "dbo.Bartenders");

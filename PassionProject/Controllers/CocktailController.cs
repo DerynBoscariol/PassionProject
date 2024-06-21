@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-using System.Web.Mvc;
-using System.Diagnostics;
-using System.Web.Script.Serialization;
-using PassionProject.Models;
+﻿using PassionProject.Models;
 using PassionProject.Models.ViewModels;
-using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace PassionProject.Controllers
 {
@@ -141,7 +137,8 @@ namespace PassionProject.Controllers
 
         //POST: Cocktail/Update/id
         [HttpPost]
-        public ActionResult Update(int id, Cocktail cocktail)
+        [Route("/cocktail/update/{id}")]
+        public ActionResult Update(int id, CocktailDto cocktail)
         {
             try
             {
@@ -152,7 +149,7 @@ namespace PassionProject.Controllers
                 Debug.WriteLine("Alcoholic Ingredients: " + cocktail.LiqIn);
                 Debug.WriteLine("Mix Ingredients: " + cocktail.MixIn);
 
-                string url = "https://localhost:44307/api/cocktail/UpdateCocktail/" + id;
+                string url = "https://localhost:44307/api/cocktaildata/UpdateCocktail/" + id;
                 string jsonpayload = serializer.Serialize(cocktail);
                 Debug.WriteLine(jsonpayload);
 
@@ -163,7 +160,7 @@ namespace PassionProject.Controllers
                 //Header : Content-Type: application/json
                 //
                 HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
-
+                
                 return RedirectToAction("Details/" + id);
 
             }
@@ -172,23 +169,32 @@ namespace PassionProject.Controllers
                 return View();
             }
         }
-        //GET: Cocktail/Delete/id
-        public ActionResult Delete(int id, FormCollection collection) 
-        {
-           string url = "cocktailData/DeleteCocktail/" + id;
-           HttpContent content = new StringContent("");
-           content.Headers.ContentType.MediaType = "application/json";
-           HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
 
-             if (responseMessage.IsSuccessStatusCode)
-             {
-              return RedirectToAction("List");
-             }
-              else
+        public ActionResult DeleteConfirm(int id)
+        {
+            string url = "https://localhost:44307/api/cocktaildata/findcocktail/" + id;
+            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            CocktailDto selectedcocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
+            return View(selectedcocktail);
+        }
+
+        //GET: Cocktail/Delete/id
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            string url = "https://localhost:44307/api/cocktailData/DeleteCocktail/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
+
+            if (responseMessage.IsSuccessStatusCode)
             {
-              return RedirectToAction("Error");
+                return RedirectToAction("List");
             }
-                
+            else
+            {
+                return RedirectToAction("Error");
+            }
+
         }
     }
 }

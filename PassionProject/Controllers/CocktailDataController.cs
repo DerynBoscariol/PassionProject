@@ -1,16 +1,13 @@
 ﻿using PassionProject.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Diagnostics;
-using PassionProject.Migrations;
 
 namespace PassionProject.Controllers
 {
@@ -45,7 +42,9 @@ namespace PassionProject.Controllers
                 DrinkRecipe = c.DrinkRecipe,
                 LiqIn = c.LiqIn,
                 MixIn = c.MixIn,
-                BartenderId = c.BartenderId
+                BartenderId = c.BartenderId,
+                FirstName =c.Bartender.FirstName,
+                LastName =c.Bartender.LastName
             }));
             Debug.WriteLine(cocktailDtos);
             return Ok(cocktailDtos);
@@ -62,7 +61,7 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
         /// </example>
-        
+
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
         [Route("api/cocktaildata/listcocktailsbybartender/{id}")]
@@ -79,11 +78,13 @@ namespace PassionProject.Controllers
                 DrinkRecipe = c.DrinkRecipe,
                 LiqIn = c.LiqIn,
                 MixIn = c.MixIn,
-                BartenderId = c.BartenderId
+                BartenderId = c.BartenderId,
+                FirstName = c.Bartender.FirstName,
+                LastName = c.Bartender.LastName
             }));
 
             return Ok(CocktailDtos);
-        } 
+        }
 
         [ResponseType(typeof(CocktailDto))]
         [HttpGet]
@@ -104,7 +105,9 @@ namespace PassionProject.Controllers
                 DrinkRecipe = Cocktail.DrinkRecipe,
                 LiqIn = Cocktail.LiqIn,
                 MixIn = Cocktail.MixIn,
-                BartenderId = Cocktail.BartenderId
+                BartenderId = Cocktail.BartenderId,
+                FirstName = Cocktail.Bartender.FirstName,
+                LastName = Cocktail.Bartender.LastName
             };
 
             return Ok(CocktailDto);
@@ -113,7 +116,7 @@ namespace PassionProject.Controllers
 
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateCocktail(int id, Cocktail cocktail)
+        public IHttpActionResult UpdateCocktail(int id, CocktailDto cocktail)
         {
             Debug.WriteLine("I have succesfully reached update cocktail method!");
 
@@ -141,7 +144,7 @@ namespace PassionProject.Controllers
             catch (DbUpdateConcurrencyException)
 
             {
-                if(!CocktailExists(id))
+                if (!CocktailExists(id))
                 {
                     Debug.WriteLine("Cocktail Not Found");
                     return NotFound();
@@ -161,10 +164,10 @@ namespace PassionProject.Controllers
         [HttpPost]
         public IHttpActionResult AddCocktail(Cocktail cocktail)
         {
-            Debug.WriteLine("Cocktail recieved by datacontroller: " + cocktail); //fix debug message*******
+            Debug.WriteLine(cocktail);
             if (!ModelState.IsValid)
             {
-                Debug.WriteLine("ModelState invalid");
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 return BadRequest(ModelState);
             }
 
@@ -203,7 +206,7 @@ namespace PassionProject.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CocktailExists(int id) 
+        private bool CocktailExists(int id)
         {
             return db.Cocktails.Count(e => e.DrinkId == id) > 0;
         }

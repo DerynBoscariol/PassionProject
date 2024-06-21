@@ -7,7 +7,7 @@
         <h2>Update Cocktail</h2>
         <form action="/Cocktail/Update/@Model.SelectedCocktail.DrinkId" method="POST">
             <div style="display:none;">
-                <input type="text" name="DrinkId" value="@Model.SelectedCocktail.DrinkId" />
+                <input type="number" name="DrinkId" value="@Model.SelectedCocktail.DrinkId" />
             </div>
             <div>
                 <label>Cocktail Name:</label> <input type="text" name="DrinkName" value="@Model.SelectedCocktail.DrinkName" />
@@ -35,8 +35,6 @@
                     }
                 </select>
             </div>
-            <div>
-                <input type="submit" value="Update Cocktail" />
+            <button type="submit" value="Update Cocktail">Update Cocktail</button>
 
-            </div>
         </form>

@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\deryn\\source\\repos\\PassionProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|C:\\Users\\deryn\\source\\repos\\PassionProject\\passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\cocktailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|C:\\Users\\deryn\\source\\repos\\PassionProject\\passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\cocktaildatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\bartendercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\bartendercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\cocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\cocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\models\\viewmodels\\detailscocktail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\controllers\\bartenderdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\controllers\\bartenderdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|c:\\users\\deryn\\source\\repos\\passionproject\\passionproject\\views\\cocktail\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFE95F08-1840-4FAA-9AFF-EC458504F2BC}|PassionProject\\PassionProject.csproj|solutionrelative:passionproject\\views\\cocktail\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,39 +54,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\Edit.cshtml",
+              "RelativeDocumentMoniker": "PassionProject\\Views\\Cocktail\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\Edit.cshtml",
+              "RelativeToolTip": "PassionProject\\Views\\Cocktail\\Edit.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-21T12:10:28.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DetailsCocktail.cs",
               "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
               "RelativeDocumentMoniker": "PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
               "RelativeToolTip": "PassionProject\\Models\\ViewModels\\DetailsCocktail.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T10:28:27.012Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\Details.cshtml",
               "RelativeDocumentMoniker": "PassionProject\\Views\\Cocktail\\Details.cshtml",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\Details.cshtml",
               "RelativeToolTip": "PassionProject\\Views\\Cocktail\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-21T10:26:35.076Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "BartenderDataController.cs",
               "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderDataController.cs",
               "RelativeDocumentMoniker": "PassionProject\\Controllers\\BartenderDataController.cs",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderDataController.cs",
               "RelativeToolTip": "PassionProject\\Controllers\\BartenderDataController.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAAwJQAAAABAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAACYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T07:49:37.049Z",
               "EditorCaption": ""
@@ -87,35 +112,61 @@
               "RelativeDocumentMoniker": "PassionProject\\Controllers\\BartenderController.cs",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\BartenderController.cs",
               "RelativeToolTip": "PassionProject\\Controllers\\BartenderController.cs",
-              "ViewState": "AQIAAGwAAAAAAAAAAAAAAHMAAAARAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAIwBsAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T06:19:54.994Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "CocktailDataController.cs",
               "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailDataController.cs",
               "RelativeDocumentMoniker": "PassionProject\\Controllers\\CocktailDataController.cs",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailDataController.cs",
               "RelativeToolTip": "PassionProject\\Controllers\\CocktailDataController.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAzwGAAAAAiAAAA",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAAwHYAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-11T19:12:13.929Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CocktailController.cs",
               "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailController.cs",
               "RelativeDocumentMoniker": "PassionProject\\Controllers\\CocktailController.cs",
               "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Controllers\\CocktailController.cs",
               "RelativeToolTip": "PassionProject\\Controllers\\CocktailController.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAQwD8AAAA6AAAA",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAswIwAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T05:03:03.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cocktail.cs",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Cocktail.cs",
+              "RelativeDocumentMoniker": "PassionProject\\Models\\Cocktail.cs",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Models\\Cocktail.cs",
+              "RelativeToolTip": "PassionProject\\Models\\Cocktail.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T10:36:47.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "New.cshtml",
+              "DocumentMoniker": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\New.cshtml",
+              "RelativeDocumentMoniker": "PassionProject\\Views\\Cocktail\\New.cshtml",
+              "ToolTip": "C:\\Users\\deryn\\source\\repos\\PassionProject\\PassionProject\\Views\\Cocktail\\New.cshtml",
+              "RelativeToolTip": "PassionProject\\Views\\Cocktail\\New.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-21T11:13:31.17Z",
               "EditorCaption": ""
             }
           ]
