@@ -13,24 +13,24 @@
 <body>
     <div>
         <h2>Update Bartender</h2>
-        <form action="/Bartender/Update/@Model.bartenderId" method="POST">
+        <form action="/Bartender/Update/@Model.BartenderId" method="POST">
             <div style="display:none;">
-                <input type="text" name="bartenderId" value="@Model.bartenderId" />
+                <input type="text" name="BartenderId" value="@Model.BartenderId" />
             </div>
             <div>
-                <label>First Name:</label> <input type="text" name="firstName" value="@Model.firstName" />
+                <label>First Name:</label> <input type="text" name="FirstName" value="@Model.FirstName" />
             </div>
             <div>
-                <label>Last Name:</label> <input type="text" name="lastName" value="@Model.lastName" />
+                <label>Last Name:</label> <input type="text" name="LastName" value="@Model.LastName" />
             </div>
             <div>
-                <label>Email:</label> <input type="email" name="email" value="@Model.email" />
+                <label>Email:</label> <input type="email" name="Email" value="@Model.Email" />
             </div>
             <div>
-                <label>Number of Cocktails Created:</label> <input type="number" name="numDrinks" value="@Model.numDrinks" />
+                <label>Number of Cocktails Created:</label> <input type="number" name="NumDrinks" value="@Model.NumDrinks" />
             </div>
             <div>
-                <label>Last Cocktail Created:</label> <input type="date" name="lastDrink" value="@Model.lastDrink" />
+                <label>Last Cocktail Created:</label> <input type="date" name="LastDrink" value="@Model.LastDrink" />
             </div>
             <div>
                 <input type="submit" value="Update Bartender" />

@@ -1,38 +1,36 @@
 ﻿@model PassionProject.Models.ViewModels.UpdateCocktail
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
         <h2>Update Cocktail</h2>
-        <form action="/Cocktail/Update/@Model.SelectedCocktail.drinkId" method="POST">
+        <form action="/Cocktail/Update/@Model.SelectedCocktail.DrinkId" method="POST">
             <div style="display:none;">
-                <input type="text" name="drinkId" value="@Model.SelectedCocktail.drinkId" />
+                <input type="text" name="DrinkId" value="@Model.SelectedCocktail.DrinkId" />
             </div>
             <div>
-                <label>Cocktail Name:</label> <input type="text" name="drinkName" value="@Model.SelectedCocktail.drinkName" />
+                <label>Cocktail Name:</label> <input type="text" name="DrinkName" value="@Model.SelectedCocktail.DrinkName" />
             </div>
             <div>
-                <label>Cocktail Type:</label> <input type="text" name="drinkType" value="@Model.SelectedCocktail.drinkType"/>
+                <label>Cocktail Type:</label> <input type="text" name="DrinkType" value="@Model.SelectedCocktail.DrinkType"/>
             </div>
             <div>
-                <label>Drink Recipe:</label> <input type="text" name="drinkRecipe" value="@Model.SelectedCocktail.drinkRecipe" />
+                <label>Drink Recipe:</label> <input type="text" name="DrinkRecipe" value="@Model.SelectedCocktail.DrinkRecipe" />
             </div>
             <div>
-                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" value="@Model.SelectedCocktail.liqIn"/>
+                <label>Alcoholic Ingredients:</label> <input type="text" name="LiqIn" value="@Model.SelectedCocktail.LiqIn"/>
             </div>
             <div>
-                <label>Mix Ingredients:</label> <input type="text" name="mixIn" value="@Model.SelectedCocktail.mixIn" />
+                <label>Mix Ingredients:</label> <input type="text" name="MixIn" value="@Model.SelectedCocktail.MixIn" />
             </div>
             <div>
-                <label>Date Created:</label> <input type="date" name="datePosted" value="@Model.SelectedCocktail.datePosted" />
-            </div>
-            <div>
-                <label>Bartender:</label>
-                <select name="bartenderId" >
-                    <option value="@Model.SelectedCocktail.bartenderId">@Model.SelectedCocktail.firstName @Model.SelectedCocktail.lastName</option>
-                    @foreach (var bartender in Model.BartenderCreated)
+                <label>Select Bartender:</label>
+                <select name="BartenderId" >
+                    <option selected value="@Model.SelectedCocktail.BartenderId">@Model.SelectedCocktail.FirstName @Model.SelectedCocktail.LastName</option>
+                    @foreach (var bartender in Model.BartenderOptions)
                     {
-                        <option value="@bartender.bartenderId">@bartender.firstName @bartender.lastName</option>
+                        <option value="@bartender.BartenderId">@bartender.FirstName @bartender.LastName</option>
 
                     }
                 </select>

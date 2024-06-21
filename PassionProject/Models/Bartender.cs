@@ -11,23 +11,21 @@ namespace PassionProject.Models
     {
         //Describing bartender 
         [Key]
-        public int bartenderId { get; set; }
-        public string firstName { get; set; }   
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public int numDrinks { get; set; }
-        public DateTime lastDrink { get; set; }
+        public int BartenderId { get; set; }
+        public string FirstName { get; set; }   
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public int NumDrinks { get; set; }
     }
 
     //Data transfer object (DTO) - Communicating the bartenders info externally
     public class BartenderDto
     {
-        public int bartenderId { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public int numDrinks { get; set; }
-        public DateTime lastDrink { get; set; }
+        public int BartenderId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public int NumDrinks { get; set; }
 
     }
 }

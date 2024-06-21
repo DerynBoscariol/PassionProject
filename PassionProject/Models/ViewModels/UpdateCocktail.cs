@@ -9,6 +9,6 @@ namespace PassionProject.Models.ViewModels
     {
         public CocktailDto SelectedCocktail { get; set; }
 
-        public IEnumerable<BartenderDto> BartenderCreated { get; set; }
+        public IEnumerable<BartenderDto> BartenderOptions { get; set; }
     }
 }

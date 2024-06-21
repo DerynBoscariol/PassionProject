@@ -13,20 +13,20 @@
 <body>
         <a href="/Bartender/List">Go back to list</a>
         <br />
-        <a href="/Bartender/Edit/@Model.SelectedBartender.bartenderId">Update</a>
+        <a href="/Bartender/Edit/@Model.SelectedBartender.BartenderId">Update</a>
         <br />
-        <a style="color:#ab2020;" href="/Species/DeleteConfirm/@Model.SelectedBartender.bartenderId">Delete</a>
-        <h2>@Model.SelectedBartender.firstName @Model.SelectedBartender.lastName</h2>
-        <div>Email: @Model.SelectedBartender.email</div>
-        <div>Number of Cocktails Created: @Model.SelectedBartender.numDrinks</div>
-        <div>Last Cocktail Created: @Model.SelectedBartender.lastDrink</div>
+        <a style="color:#ab2020;" href="/Bartender/DeleteConfirm/@Model.SelectedBartender.BartenderId">Delete</a>
+        <h2>@Model.SelectedBartender.FirstName @Model.SelectedBartender.LastName</h2>
+        <div>Email: @Model.SelectedBartender.Email</div>
+        <div>Number of Cocktails Created: @Model.SelectedBartender.NumDrinks</div>
+        <div>Last Cocktail Created: @Model.SelectedBartender.LastDrink</div>
 
 
         <div style="margin-top:100px;">
-            <h3>Cocktails Created By @Model.SelectedBartender.firstName</h3>
+            <h3>Cocktails Created By @Model.SelectedBartender.FirstName</h3>
             @foreach (var cocktail in Model.CocktailsMade)
             {
-                <a href="/Cocktail/Details/@cocktail.drinkId">@cocktail.drinkName</a>
+                <a href="/Cocktail/Details/@cocktail.DrinkId">@cocktail.DrinkName</a>
 
             }
         </div>

@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<PassionProject.Models.CocktailDto>
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
         <h2>List of Cocktails</h2>
         <a href="/Cocktail/New">Add a New Cocktail</a>
         @foreach (var cocktail in Model)
         {
-            <h3><a href="/Cocktail/Details/@cocktail.drinkId">@cocktail.drinkName</a></h3>
+            <h3><a href="/Cocktail/Details/@cocktail.DrinkId">@cocktail.DrinkName</a></h3>
         }
    

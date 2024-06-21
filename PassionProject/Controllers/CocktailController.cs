@@ -59,13 +59,13 @@ namespace PassionProject.Controllers
             CocktailDto SelectedCocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
 
             Debug.WriteLine("Cocktail received: ");
-            Debug.WriteLine(SelectedCocktail.drinkName);
+            Debug.WriteLine(SelectedCocktail.DrinkName);
 
             ViewModel.SelectedCocktail = SelectedCocktail;
 
             //Show bartender who made the drink
 
-            string burl = "https://localhost:44307/api/BartenderData/FindBartender/" + SelectedCocktail.bartenderId;
+            string burl = "https://localhost:44307/api/BartenderData/FindBartender/" + SelectedCocktail.BartenderId;
             responseMessage = client.GetAsync(burl).Result;
             BartenderDto BartenderCreated = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
 
@@ -73,18 +73,6 @@ namespace PassionProject.Controllers
 
             return View(ViewModel);
 
-        }
-
-        //POST: drink/Associate
-        [HttpPost]
-        public ActionResult Associate(int id, int bartenderId)
-        {
-            string url = "cocktaildata/Associate/"+ id + "/" +bartenderId;
-            HttpContent content = new StringContent("");
-            content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
-
-            return RedirectToAction("Details/" + id);
         }
 
         public ActionResult Error()
@@ -95,7 +83,13 @@ namespace PassionProject.Controllers
 
         public ActionResult New()
         {
-            return View();
+            //information about all bartenders in the system.
+            //GET api/bartenderdata/listbartenders
+            string url = "https://localhost:44307/api/bartenderdata/listbartenders";
+            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
+            Debug.WriteLine("New method successful");
+            return View(BartenderOptions);
         }
 
         //POST: Cocktail/Create
@@ -103,9 +97,9 @@ namespace PassionProject.Controllers
         public ActionResult Create(Cocktail cocktail)
         {
             Debug.WriteLine("Json payload: ");
-            Debug.WriteLine(cocktail.drinkId + " " + cocktail.drinkName);
+            Debug.WriteLine(cocktail.DrinkName);
 
-            string url = "https://localhost:44307/api/cocktaildata/addcocktail";
+            string url = "https://localhost:44307/api/cocktaildata/AddCocktail";
 
             string jsonpayload = serializer.Serialize(cocktail);
 
@@ -115,13 +109,14 @@ namespace PassionProject.Controllers
             content.Headers.ContentType.MediaType = "application/json";
 
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
             }
             else
             {
-                Debug.WriteLine(responseMessage);
+                Debug.WriteLine("Error: response message: " + responseMessage);
                 return RedirectToAction("Error");
             }
         }
@@ -140,14 +135,13 @@ namespace PassionProject.Controllers
             CocktailDto selectedCocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
             ViewModel.SelectedCocktail = selectedCocktail;
 
-            Debug.WriteLine("Cocktail received: ");
-            Debug.WriteLine(selectedCocktail);
+            Debug.WriteLine("Cocktail received: " + selectedCocktail);
 
             string durl = "https://localhost:44307/api/bartenderdata/listbartenders";
             responseMessage = client.GetAsync(durl).Result;
             IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
 
-            ViewModel.BartenderCreated = BartenderOptions;
+            ViewModel.BartenderOptions = BartenderOptions;
 
 
             return View(ViewModel);
@@ -160,13 +154,13 @@ namespace PassionProject.Controllers
             try
             {
                 Debug.WriteLine("The new cocktail info is:");
-                Debug.WriteLine("Name: " + cocktail.drinkName);
-                Debug.WriteLine("Type: " + cocktail.drinkType);
-                Debug.WriteLine("Recipe: " + cocktail.drinkRecipe);
-                Debug.WriteLine("Alcoholic Ingredients: " + cocktail.liqIn);
-                Debug.WriteLine("Mix Ingredients: " + cocktail.mixIn);
+                Debug.WriteLine("Name: " + cocktail.DrinkName);
+                Debug.WriteLine("Type: " + cocktail.DrinkType);
+                Debug.WriteLine("Recipe: " + cocktail.DrinkRecipe);
+                Debug.WriteLine("Alcoholic Ingredients: " + cocktail.LiqIn);
+                Debug.WriteLine("Mix Ingredients: " + cocktail.MixIn);
 
-                string url = "UpdateCocktail/" + id;
+                string url = "https://localhost:44307/api/cocktail/UpdateCocktail/" + id;
                 string jsonpayload = serializer.Serialize(cocktail);
                 Debug.WriteLine(jsonpayload);
 

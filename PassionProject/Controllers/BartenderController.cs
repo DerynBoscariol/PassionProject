@@ -82,7 +82,7 @@ namespace PassionProject.Controllers
         public ActionResult Create(Bartender Bartender)
         {
             Debug.WriteLine("the json payload is :");
-            Debug.WriteLine(Bartender.firstName + Bartender.lastName);
+            Debug.WriteLine(Bartender.FirstName + Bartender.LastName);
 
             string url = "bartenderdata/addBartender";
 

@@ -39,14 +39,13 @@ namespace PassionProject.Controllers
             //convert each cocktail entity into a cocktaildto and add to the list
             cocktails.ForEach(c => cocktailDtos.Add(new CocktailDto()
             {
-                drinkId = c.drinkId,
-                drinkName = c.drinkName,
-                drinkType = c.drinkType,
-                drinkRecipe = c.drinkRecipe,
-                liqIn = c.liqIn,
-                mixIn = c.mixIn,
-                datePosted = c.datePosted,
-                bartenderId = c.bartenderId
+                DrinkId = c.DrinkId,
+                DrinkName = c.DrinkName,
+                DrinkType = c.DrinkType,
+                DrinkRecipe = c.DrinkRecipe,
+                LiqIn = c.LiqIn,
+                MixIn = c.MixIn,
+                BartenderId = c.BartenderId
             }));
             Debug.WriteLine(cocktailDtos);
             return Ok(cocktailDtos);
@@ -69,19 +68,18 @@ namespace PassionProject.Controllers
         [Route("api/cocktaildata/listcocktailsbybartender/{id}")]
         public IHttpActionResult ListCocktailsByBartender(int id)
         {
-            List<Cocktail> Cocktails = db.Cocktails.Where(c => c.bartenderId == id).ToList();
+            List<Cocktail> Cocktails = db.Cocktails.Where(c => c.BartenderId == id).ToList();
             List<CocktailDto> CocktailDtos = new List<CocktailDto>();
 
             Cocktails.ForEach(c => CocktailDtos.Add(new CocktailDto()
             {
-                drinkId = c.drinkId,
-                drinkName = c.drinkName,
-                drinkType = c.drinkType,
-                drinkRecipe = c.drinkRecipe,
-                liqIn = c.liqIn,
-                mixIn = c.mixIn,
-                datePosted = c.datePosted,
-                bartenderId = c.bartenderId
+                DrinkId = c.DrinkId,
+                DrinkName = c.DrinkName,
+                DrinkType = c.DrinkType,
+                DrinkRecipe = c.DrinkRecipe,
+                LiqIn = c.LiqIn,
+                MixIn = c.MixIn,
+                BartenderId = c.BartenderId
             }));
 
             return Ok(CocktailDtos);
@@ -100,14 +98,13 @@ namespace PassionProject.Controllers
             }
             CocktailDto CocktailDto = new CocktailDto()
             {
-                drinkId = Cocktail.drinkId,
-                drinkName = Cocktail.drinkName,
-                drinkType = Cocktail.drinkType,
-                drinkRecipe = Cocktail.drinkRecipe,
-                liqIn = Cocktail.liqIn,
-                mixIn = Cocktail.mixIn,
-                datePosted = Cocktail.datePosted,
-                bartenderId = Cocktail.bartenderId
+                DrinkId = Cocktail.DrinkId,
+                DrinkName = Cocktail.DrinkName,
+                DrinkType = Cocktail.DrinkType,
+                DrinkRecipe = Cocktail.DrinkRecipe,
+                LiqIn = Cocktail.LiqIn,
+                MixIn = Cocktail.MixIn,
+                BartenderId = Cocktail.BartenderId
             };
 
             return Ok(CocktailDto);
@@ -126,12 +123,12 @@ namespace PassionProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != cocktail.drinkId)
+            if (id != cocktail.DrinkId)
             {
                 Debug.WriteLine("ID mismatch");
                 Debug.WriteLine("Get parameter" + id);
-                Debug.WriteLine("POST parameter" + cocktail.drinkId);
-                Debug.WriteLine("POST parameter" + cocktail.drinkName);
+                Debug.WriteLine("POST parameter" + cocktail.DrinkId);
+                Debug.WriteLine("POST parameter" + cocktail.DrinkName);
                 return BadRequest();
             }
 
@@ -158,45 +155,24 @@ namespace PassionProject.Controllers
             Debug.WriteLine("No conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
-        //POST: associate/drinkid/bartenderid
-        [HttpPost]
-        [Route("api/cocktailData/Associate/{drinkId}/{bartenderId}")]
-        public IHttpActionResult Associate(int drinkId, int bartenderId)
-        {
-
-            Cocktail SelectedCocktail = db.Cocktails.Where(c => c.drinkId == drinkId).FirstOrDefault();
-            Bartender SelectedBartender = db.Bartenders.Find(bartenderId);
-
-            if (SelectedBartender == null)
-            {
-                return NotFound();
-            }
-
-            SelectedCocktail.Bartender = SelectedBartender;
-            db.SaveChanges();
-
-            return Ok();
-        }
-
 
         // POST: api/CocktailData/AddCocktail
         [ResponseType(typeof(Cocktail))]
         [HttpPost]
         public IHttpActionResult AddCocktail(Cocktail cocktail)
         {
-            cocktail.bartenderId = cocktail.Bartender.bartenderId;
-            Associate(cocktail.drinkId, cocktail.bartenderId);
-
-
+            Debug.WriteLine("Cocktail recieved by datacontroller: " + cocktail); //fix debug message*******
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("ModelState invalid");
                 return BadRequest(ModelState);
             }
 
             db.Cocktails.Add(cocktail);
+            Debug.WriteLine("Added cocktail:" + cocktail);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = cocktail.drinkId }, cocktail);
+            return CreatedAtRoute("DefaultApi", new { id = cocktail.DrinkId }, cocktail);
         }
 
         // POST: api/CocktailData/DeleteCocktail/id
@@ -229,7 +205,7 @@ namespace PassionProject.Controllers
 
         private bool CocktailExists(int id) 
         {
-            return db.Cocktails.Count(e => e.drinkId == id) > 0;
+            return db.Cocktails.Count(e => e.DrinkId == id) > 0;
         }
 
     }

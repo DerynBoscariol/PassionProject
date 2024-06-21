@@ -1,6 +1,7 @@
 ﻿@model PassionProject.Models.CocktailDto
 @{
-     ViewBag.Title = "DeleteConfirm";
+    ViewBag.Title = "DeleteConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -14,9 +15,9 @@
     <div>
         <h2>Are you sure you want to remove this cocktail?</h2>
         <a href="/Cocktail/List">Cancel</a>
-        <h2>@Model.drinkName by @Model.firstName @Model.lastName</h2>
+        <h2>@Model.DrinkName by @Model.FirstName @Model.LastName</h2>
 
-            <form action="/cocktail/Delete/@Model.drinkId" method="POST">
+            <form action="/cocktail/Delete/@Model.DrinkId" method="POST">
                 <input type="submit" value="Confirm Delete" />
 
             </form>

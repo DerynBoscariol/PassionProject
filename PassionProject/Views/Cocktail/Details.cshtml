@@ -2,19 +2,19 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
     <p>
         <a href="/Cocktail/List">Go back to list</a>
         <br />
-        <a href="/Cocktail/Edit/@Model.SelectedCocktail.drinkId">Update</a>
+        <a href="/Cocktail/Edit/@Model.SelectedCocktail.DrinkId">Update</a>
         <br />
-        <a href="/Cocktail/DeleteConfirm/@Model.SelectedCocktail.drinkId">Delete</a>
-        <h2>@Model.SelectedCocktail.drinkName</h2>
-        <div>Cocktail Type: @Model.SelectedCocktail.drinkType</div>
-        <div>Created By: @Model.SelectedCocktail.bartenderId </div>
-        <div>Alcoholic Ingredients: @Model.SelectedCocktail.liqIn</div>
-        <div>Mix Ingredients: @Model.SelectedCocktail.mixIn</div>
-        <div>Recipe: @Model.SelectedCocktail.drinkRecipe</div>
-        <div>Created: @Model.SelectedCocktail.datePosted</div>
+        <a href="/Cocktail/DeleteConfirm/@Model.SelectedCocktail.DrinkId">Delete</a>
+        <h2>@Model.SelectedCocktail.DrinkName</h2>
+        <div>Cocktail Type: @Model.SelectedCocktail.DrinkType</div>
+        <div>Created By: @Model.BartenderCreated.FirstName @Model.BartenderCreated.LastName </div>
+        <div>Alcoholic Ingredients: @Model.SelectedCocktail.LiqIn</div>
+        <div>Mix Ingredients: @Model.SelectedCocktail.MixIn</div>
+        <div>Recipe: @Model.SelectedCocktail.DrinkRecipe</div>
     </p>

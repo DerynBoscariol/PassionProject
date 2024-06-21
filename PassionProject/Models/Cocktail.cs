@@ -10,33 +10,31 @@ namespace PassionProject.Models
     public class Cocktail
     {
         [Key]
-        public int drinkId { get; set; }
-        public string drinkName { get; set; }
-        public string drinkType { get; set; }
-        public string drinkRecipe { get; set; }
-        public string liqIn { get; set; }
-        public string mixIn { get; set; }
-        public DateTime datePosted { get; set; }
+        public int DrinkId { get; set; }
+        public string DrinkName { get; set; }
+        public string DrinkType { get; set; }
+        public string DrinkRecipe { get; set; }
+        public string LiqIn { get; set; }
+        public string MixIn { get; set; }
 
         //A cocktail has one bartender, while one bartender can have many cocktails
         [ForeignKey("Bartender")]
-        public int bartenderId { get; set; }
+        public int BartenderId { get; set; }
         public virtual Bartender Bartender { get; set; }
     }
 
     //Data transfer object (DTO) - Communicating the bartenders info externally
     public class CocktailDto
     {
-        public int drinkId { get; set; }
-        public string drinkName { get; set; }
-        public string drinkType { get; set; }
-        public string drinkRecipe { get; set; }
-        public string liqIn { get; set; }
-        public string mixIn { get; set; }
-        public DateTime datePosted { get; set; }
-        public int bartenderId { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public int DrinkId { get; set; }
+        public string DrinkName { get; set; }
+        public string DrinkType { get; set; }
+        public string DrinkRecipe { get; set; }
+        public string LiqIn { get; set; }
+        public string MixIn { get; set; }
+        public int BartenderId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
     }
 }

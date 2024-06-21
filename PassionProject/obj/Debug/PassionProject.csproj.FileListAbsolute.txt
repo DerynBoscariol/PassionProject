@@ -117,3 +117,5 @@ C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProje
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.bartenderMigration.resources
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.cocktail.resources
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.bartenderForeignKey.resources
+C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.changedModel.resources
+C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.changedModelCase.resources

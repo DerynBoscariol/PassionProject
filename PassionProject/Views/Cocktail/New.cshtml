@@ -1,34 +1,42 @@
 ﻿@model IEnumerable<PassionProject.Models.BartenderDto>
 @{
     ViewBag.Title = "Create";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-        <h2>Add a Cocktail</h2>
-        <form action="/Cocktail/Create" method="POST">
-            <div>
-                <label>Cocktail Name:</label> <input type="text" name="drinkName" />
-            </div>
-            <div>
-                <label>Cocktail Type:</label> <input type="text" name="drinkType" />
-            </div>
-            <div>
-                <label>Recipe:</label> <input type="text" name="drinkRecipe" />
-            </div>
-            <div>
-                <label>Alcoholic Ingredients:</label> <input type="text" name="liqIn" />
-            </div>
-            <div>
-                <label>Mix Ingredients:</label> <input type="text" name="mixIn" />
-            </div>
-            <div>
-                <label>Date Created:</label> <input type="text" name="datePosted" />
-            </div>
-            <div>
-                <label>Select Bartender</label>
-
-            </div>
-            <div>
-                <input type="submit" value="Add Cocktail" />
-            </div>
-        </form>
-    
+<h2>Add a Cocktail</h2>
+<form action="/Cocktail/Create" method="POST">
+    <div>
+        <label for="drinkNameInput">Cocktail Name:</label>
+        <input type="text" id="drinkNameInput" name="DrinkName" required />
+    </div>
+    <div>
+        <label for="drinkTypeInput">Cocktail Type:</label>
+        <input type="text" id="drinkTypeInput" name="DrinkType" required />
+    </div>
+    <div>
+        <label for="drinkRecipeInput">Recipe:</label>
+        <input type="text" id="drinkRecipeInput" name="DrinkRecipe" required />
+    </div>
+    <div>
+        <label for="liqInInput">Alcoholic Ingredients:</label>
+        <input type="text" id="liqInInput" name="LiqIn" required />
+    </div>
+    <div>
+        <label for="mixInInput">Mix Ingredients:</label>
+        <input type="text" id="mixInInput" name="MixIn" required />
+    </div>
+    <div>
+        <label for="bartenderIdInput">Select Bartender:</label>
+        <select id="bartenderIdInput" name="BartenderId" required>
+                <option disabled selected hidden>--Select-Bartender--</option>
+            @foreach (var bartender in Model)
+            {
+                <option value="@bartender.BartenderId">@bartender.FirstName @bartender.LastName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Cocktail" />
+    </div>
+</form>

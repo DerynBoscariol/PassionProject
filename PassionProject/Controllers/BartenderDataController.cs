@@ -28,12 +28,11 @@ namespace PassionProject.Controllers
 
             Bartenders.ForEach(b => BartenderDtos.Add(new BartenderDto()
             {
-                bartenderId = b.bartenderId,
-                firstName = b.firstName,
-                lastName = b.lastName,
-                email = b.email,
-                numDrinks = b.numDrinks,
-                lastDrink = b.lastDrink
+                BartenderId = b.BartenderId,
+                FirstName = b.FirstName,
+                LastName = b.LastName,
+                Email = b.Email,
+                NumDrinks = b.NumDrinks
             }));
 
             return Ok(BartenderDtos);
@@ -54,12 +53,11 @@ namespace PassionProject.Controllers
 
             BartenderDto BartenderDto = new BartenderDto()
             {
-                bartenderId = Bartender.bartenderId,
-                firstName = Bartender.firstName,
-                lastName = Bartender.lastName,
-                email = Bartender.email,
-                numDrinks = Bartender.numDrinks,
-                lastDrink = Bartender.lastDrink
+                BartenderId = Bartender.BartenderId,
+                FirstName = Bartender.FirstName,
+                LastName = Bartender.LastName,
+                Email = Bartender.Email,
+                NumDrinks = Bartender.NumDrinks
             };
 
             return Ok(BartenderDto);
@@ -75,7 +73,7 @@ namespace PassionProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != b.bartenderId)
+            if (id != b.BartenderId)
             {
 
                 return BadRequest();
@@ -114,7 +112,7 @@ namespace PassionProject.Controllers
 
             db.Bartenders.Add(Bartender);
             db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = Bartender.bartenderId }, Bartender);
+            return CreatedAtRoute("DefaultApi", new { id = Bartender.BartenderId }, Bartender);
         }
 
         //POST: api/BartenderData/DeleteBartender/id
@@ -145,7 +143,7 @@ namespace PassionProject.Controllers
 
         private bool BartenderExists(int id)
         {
-            return db.Bartenders.Count(b => b.bartenderId == id) > 0;
+            return db.Bartenders.Count(b => b.BartenderId == id) > 0;
         }
     }
 }
