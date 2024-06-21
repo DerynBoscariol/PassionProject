@@ -1,9 +1,11 @@
-﻿using PassionProject.Models;
+﻿using Newtonsoft.Json;
+using PassionProject.Models;
 using PassionProject.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
@@ -14,66 +16,95 @@ namespace PassionProject.Controllers
         private static readonly HttpClient client = new HttpClient();
         private JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-        //GET: Cocktail/List
+        static CocktailController()
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+
+                UseCookies = false
+            };
+
+            client = new HttpClient(handler);
+            client.BaseAddress = new Uri("https://localhost:44307/api/");
+        }
+
+
+        // GET: Cocktail/List
         public ActionResult List()
         {
-            HttpClient client = new HttpClient();
-            string url = "https://localhost:44307/api/cocktaildata/listcocktails";
-            //communicate with cocktail data controller to retrieve list of cocktails
-            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            List<CocktailDto> cocktailDtos = new List<CocktailDto>();
 
+            try
+            {
+                string url = "cocktaildata/cocktaillist";
+                HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
-            //deserialize json response content into an IEnumerable<CocktailDTo>
-            IEnumerable<CocktailDto> cocktails = responseMessage.Content.ReadAsAsync<IEnumerable<CocktailDto>>().Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    cocktailDtos = JsonConvert.DeserializeObject<List<CocktailDto>>(responseData);
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Failed to retrieve cocktails from the API.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
+            }
 
-
-            //logging the response
-            Debug.WriteLine("Response code: ");
-            Debug.WriteLine(responseMessage.StatusCode);
-            Debug.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
-
-            Debug.WriteLine("Number of cocktails: ");
-            Debug.WriteLine(cocktails.Count());
-
-            return View(cocktails);
+            return View(cocktailDtos);
         }
 
         //GET: Cocktail/Details/id
 
         public ActionResult Details(int id)
         {
-            DetailsCocktail ViewModel = new DetailsCocktail();
-            //communicate with cocktail data controller to retrieve all information about 1 cocktail
+            DetailsCocktail viewModel = new DetailsCocktail();
 
-            HttpClient client = new HttpClient();
-            string url = "https://localhost:44307/api/cocktaildata/findcocktail/" + id;
-            //communicate with cocktail data controller to retrieve list of cocktails
-            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            try
+            {
+                string url = "cocktaildata/findcocktail/" + id;
+                HttpResponseMessage responseMessage = client.GetAsync(url).Result;
 
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    CocktailDto selectedCocktail = JsonConvert.DeserializeObject<CocktailDto>(responseData);
 
-            //deserialize json response content into an IEnumerable<CocktailDTo>
-            CocktailDto SelectedCocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
+                    viewModel.SelectedCocktail = selectedCocktail;
+                }
+                else if (responseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    ViewBag.ErrorMessage = "Cocktail not found.";
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Failed to retrieve cocktail details.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
+            }
 
-            Debug.WriteLine("Cocktail received: ");
-            Debug.WriteLine(SelectedCocktail.DrinkName);
-
-            ViewModel.SelectedCocktail = SelectedCocktail;
-
-            return View(ViewModel);
-
+            return View(viewModel);
         }
+
 
         public ActionResult Error()
         {
 
             return View();
         }
-
+        //GET: Cocktail/New
         public ActionResult New()
         {
             //information about all bartenders in the system.
             //GET api/bartenderdata/listbartenders
-            string url = "https://localhost:44307/api/bartenderdata/listbartenders";
+            string url = "bartenderdata/listbartenders";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
             Debug.WriteLine("New method successful");
@@ -84,17 +115,17 @@ namespace PassionProject.Controllers
         [HttpPost]
         public ActionResult Create(Cocktail cocktail)
         {
+
+
             Debug.WriteLine("Json payload: ");
             Debug.WriteLine(cocktail.DrinkName);
 
-            string url = "https://localhost:44307/api/cocktaildata/AddCocktail";
-
-            string jsonpayload = serializer.Serialize(cocktail);
+            string url = "cocktaildata/AddCocktail";
+            string jsonpayload = JsonConvert.SerializeObject(cocktail);
 
             Debug.WriteLine(jsonpayload);
 
-            HttpContent content = new StringContent(jsonpayload);
-            content.Headers.ContentType.MediaType = "application/json";
+            HttpContent content = new StringContent(jsonpayload, Encoding.UTF8, "application/json");
 
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
 
@@ -104,84 +135,104 @@ namespace PassionProject.Controllers
             }
             else
             {
-                Debug.WriteLine("Error: response message: " + responseMessage);
+                // Handle error response
+                Debug.WriteLine("Error response: " + responseMessage.StatusCode);
                 return RedirectToAction("Error");
             }
+
+
         }
+
 
         //GET: cocktail/edit/id
         public ActionResult Edit(int id)
         {
-            UpdateCocktail ViewModel = new UpdateCocktail();
+            try
+            {
+                UpdateCocktail viewModel = new UpdateCocktail();
 
-            string url = "https://localhost:44307/api/cocktaildata/findcocktail/" + id;
-            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+                // Get selected cocktail by ID
+                string cocktailUrl = "cocktaildata/findcocktail/" + id;
+                HttpResponseMessage cocktailResponse = client.GetAsync(cocktailUrl).Result;
+                if (!cocktailResponse.IsSuccessStatusCode)
+                {
+                    // Handle unsuccessful response
+                    Debug.WriteLine("Error fetching cocktail: " + cocktailResponse.StatusCode);
+                    return RedirectToAction("Error");
+                }
 
-            Debug.WriteLine("Response code: ");
-            Debug.WriteLine(responseMessage.StatusCode);
+                CocktailDto selectedCocktail = cocktailResponse.Content.ReadAsAsync<CocktailDto>().Result;
+                viewModel.SelectedCocktail = selectedCocktail;
 
-            CocktailDto selectedCocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
-            ViewModel.SelectedCocktail = selectedCocktail;
+                // Get list of bartenders
+                string bartendersUrl = "bartenderdata/listbartenders/";
+                HttpResponseMessage bartendersResponse = client.GetAsync(bartendersUrl).Result;
+                if (!bartendersResponse.IsSuccessStatusCode)
+                {
+                    // Handle unsuccessful response
+                    Debug.WriteLine("Error fetching bartenders: " + bartendersResponse.StatusCode);
+                    return RedirectToAction("Error");
+                }
 
-            Debug.WriteLine("Cocktail received: " + selectedCocktail);
+                IEnumerable<BartenderDto> bartenderOptions = bartendersResponse.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
+                viewModel.BartenderOptions = bartenderOptions;
 
-            string durl = "https://localhost:44307/api/bartenderdata/listbartenders";
-            responseMessage = client.GetAsync(durl).Result;
-            IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
-
-            ViewModel.BartenderOptions = BartenderOptions;
-
-
-            return View(ViewModel);
+                return View(viewModel);
+            }
+            catch (Exception ex)
+            {
+                // Log exception or handle it accordingly
+                Debug.WriteLine("Exception occurred: " + ex.Message);
+                return RedirectToAction("Error");
+            }
         }
 
         //POST: Cocktail/Update/id
         [HttpPost]
-        [Route("/cocktail/update/{id}")]
-        public ActionResult Update(int id, CocktailDto cocktail)
+        [Route("api/cocktaildata/UpdateCocktail/{id}")]
+        public ActionResult Update(int id, Cocktail cocktail)
         {
             try
             {
-                Debug.WriteLine("The new cocktail info is:");
-                Debug.WriteLine("Name: " + cocktail.DrinkName);
-                Debug.WriteLine("Type: " + cocktail.DrinkType);
-                Debug.WriteLine("Recipe: " + cocktail.DrinkRecipe);
-                Debug.WriteLine("Alcoholic Ingredients: " + cocktail.LiqIn);
-                Debug.WriteLine("Mix Ingredients: " + cocktail.MixIn);
+                string url = "cocktaildata/UpdateCocktail/" + id;
+                string jsonPayload = JsonConvert.SerializeObject(cocktail);
+                HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-                string url = "https://localhost:44307/api/cocktaildata/UpdateCocktail/" + id;
-                string jsonpayload = serializer.Serialize(cocktail);
-                Debug.WriteLine(jsonpayload);
-
-                HttpContent content = new StringContent(jsonpayload);
-                content.Headers.ContentType.MediaType = "application/json";
-
-                //POST: api/CocktailData/UpdateCocktail/{id}
-                //Header : Content-Type: application/json
-                //
                 HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
-                
-                return RedirectToAction("Details/" + id);
 
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    Debug.WriteLine("Error response: " + responseMessage.StatusCode);
+
+                    return RedirectToAction("Error");
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Debug.WriteLine("Exception occurred: " + ex.Message);
+
+                return RedirectToAction("Error");
             }
         }
 
+
+        //GET: Cocktail/Delete/id
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "https://localhost:44307/api/cocktaildata/findcocktail/" + id;
+            string url = "cocktaildata/findcocktail/" + id;
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             CocktailDto selectedcocktail = responseMessage.Content.ReadAsAsync<CocktailDto>().Result;
             return View(selectedcocktail);
         }
 
-        //GET: Cocktail/Delete/id
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            string url = "https://localhost:44307/api/cocktailData/DeleteCocktail/" + id;
+            string url = "cocktailData/DeleteCocktail/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;

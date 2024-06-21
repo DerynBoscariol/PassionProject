@@ -120,3 +120,4 @@ C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProje
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.changedModel.resources
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.changedModelCase.resources
 C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.changedDetailsCocktailViewModel.resources
+C:\Users\deryn\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.NewListViewModel.resources

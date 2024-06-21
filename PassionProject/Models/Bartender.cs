@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace PassionProject.Models
 {
@@ -14,6 +15,7 @@ namespace PassionProject.Models
     }
 
     //Data transfer object (DTO) - Communicating the bartenders info externally
+    [JsonObject]
     public class BartenderDto
     {
         public int BartenderId { get; set; }

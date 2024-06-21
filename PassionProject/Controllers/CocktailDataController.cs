@@ -1,11 +1,8 @@
 ﻿using PassionProject.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -26,7 +23,7 @@ namespace PassionProject.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
-        public IHttpActionResult ListCocktails()
+        public IHttpActionResult CocktailList()
         {
             //fetch cocktails from database and store them in a list
             List<Cocktail> cocktails = db.Cocktails.ToList();
@@ -43,8 +40,8 @@ namespace PassionProject.Controllers
                 LiqIn = c.LiqIn,
                 MixIn = c.MixIn,
                 BartenderId = c.BartenderId,
-                FirstName =c.Bartender.FirstName,
-                LastName =c.Bartender.LastName
+                FirstName = c.Bartender.FirstName,
+                LastName = c.Bartender.LastName
             }));
             Debug.WriteLine(cocktailDtos);
             return Ok(cocktailDtos);
@@ -61,11 +58,11 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
         /// </example>
-
+/*
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
-        [Route("api/cocktaildata/listcocktailsbybartender/{id}")]
-        public IHttpActionResult ListCocktailsByBartender(int id)
+        //[Route("api/cocktaildata/listcocktailsbybartender/{id}")]
+        public IHttpActionResult ListCocktailsByBartender(id)
         {
             List<Cocktail> Cocktails = db.Cocktails.Where(c => c.BartenderId == id).ToList();
             List<CocktailDto> CocktailDtos = new List<CocktailDto>();
@@ -84,7 +81,7 @@ namespace PassionProject.Controllers
             }));
 
             return Ok(CocktailDtos);
-        }
+        } */
 
         [ResponseType(typeof(CocktailDto))]
         [HttpGet]
@@ -116,67 +113,76 @@ namespace PassionProject.Controllers
 
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateCocktail(int id, CocktailDto cocktail)
+        [Route("api/cocktaildata/UpdateCocktail/{id}")]
+        public IHttpActionResult UpdateCocktail(int id, [FromBody] Cocktail cocktail)
         {
-            Debug.WriteLine("I have succesfully reached update cocktail method!");
-
             if (!ModelState.IsValid)
             {
-                Debug.WriteLine("Model State is invalid");
                 return BadRequest(ModelState);
             }
 
             if (id != cocktail.DrinkId)
             {
-                Debug.WriteLine("ID mismatch");
-                Debug.WriteLine("Get parameter" + id);
-                Debug.WriteLine("POST parameter" + cocktail.DrinkId);
-                Debug.WriteLine("POST parameter" + cocktail.DrinkName);
-                return BadRequest();
+                return BadRequest("ID mismatch");
             }
 
-            db.Entry(cocktail).State = EntityState.Modified;
+            // Example of updating the database entity
+            var existingCocktail = db.Cocktails.FirstOrDefault(c => c.DrinkId == id);
+            if (existingCocktail == null)
+            {
+                return NotFound();
+            }
+
+            existingCocktail.DrinkName = cocktail.DrinkName;
+            existingCocktail.DrinkType = cocktail.DrinkType;
+            existingCocktail.DrinkRecipe = cocktail.DrinkRecipe;
+            existingCocktail.LiqIn = cocktail.LiqIn;
+            existingCocktail.MixIn = cocktail.MixIn;
+            existingCocktail.BartenderId = cocktail.BartenderId;
 
             try
             {
                 db.SaveChanges();
+                return Ok(); // Or return any appropriate success response
             }
-            catch (DbUpdateConcurrencyException)
-
+            catch (Exception ex)
             {
-                if (!CocktailExists(id))
-                {
-                    Debug.WriteLine("Cocktail Not Found");
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                // Log the exception
+                Debug.WriteLine($"Error updating cocktail: {ex.Message}");
+                return InternalServerError(ex);
             }
-
-            Debug.WriteLine("No conditions triggered");
-            return StatusCode(HttpStatusCode.NoContent);
         }
+
+
 
         // POST: api/CocktailData/AddCocktail
         [ResponseType(typeof(Cocktail))]
         [HttpPost]
-        public IHttpActionResult AddCocktail(Cocktail cocktail)
+        [Route("api/cocktaildata/AddCocktail")]
+        public IHttpActionResult AddCocktail([FromBody] Cocktail cocktail)
         {
-            Debug.WriteLine(cocktail);
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 return BadRequest(ModelState);
             }
 
-            db.Cocktails.Add(cocktail);
-            Debug.WriteLine("Added cocktail:" + cocktail);
-            db.SaveChanges();
+            try
+            {
+                db.Cocktails.Add(cocktail);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Debug.WriteLine("Exception occurred: " + ex.Message);
+                // You can also log this to a file, database, etc.
+                return InternalServerError(ex);
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = cocktail.DrinkId }, cocktail);
         }
+
+
 
         // POST: api/CocktailData/DeleteCocktail/id
 
@@ -208,8 +214,9 @@ namespace PassionProject.Controllers
 
         private bool CocktailExists(int id)
         {
-            return db.Cocktails.Count(e => e.DrinkId == id) > 0;
+            return db.Cocktails.Count(c => c.DrinkId == id) > 0;
         }
 
     }
 }
+
