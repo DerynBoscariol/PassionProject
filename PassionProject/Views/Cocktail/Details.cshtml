@@ -8,6 +8,7 @@
 <h2>Cocktail Details</h2>
 <h3><a href="~/Cocktail/Edit/@Model.SelectedCocktail.DrinkId">Update Cocktail</a></h3>
 <h3><a href="~/Cocktail/DeleteConfirm/@Model.SelectedCocktail.DrinkId">Delete Cocktail</a></h3>
+<h4><a href="~/Cocktail/List"> Return to Cocktail List</a></h4>
 
 @if (Model.SelectedCocktail != null)
 {
@@ -27,7 +28,7 @@
         Mix Ingredients: @Model.SelectedCocktail.MixIn
     </div>
     <div>
-        Created by: @(Model.SelectedCocktail.FirstName + " " + Model.SelectedCocktail.LastName)
+        Created by: <a href="~/Bartender/Details/@Model.SelectedCocktail.BartenderId"></a>@(Model.SelectedCocktail.FirstName + " " + Model.SelectedCocktail.LastName)
     </div>
 }
 else

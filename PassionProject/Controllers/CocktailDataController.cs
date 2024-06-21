@@ -58,11 +58,11 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
         /// </example>
-/*
+
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
-        //[Route("api/cocktaildata/listcocktailsbybartender/{id}")]
-        public IHttpActionResult ListCocktailsByBartender(id)
+        [Route("api/cocktaildata/listcocktailsbybartender/{id}")]
+        public IHttpActionResult ListCocktailsByBartender(int id)
         {
             List<Cocktail> Cocktails = db.Cocktails.Where(c => c.BartenderId == id).ToList();
             List<CocktailDto> CocktailDtos = new List<CocktailDto>();
@@ -81,7 +81,7 @@ namespace PassionProject.Controllers
             }));
 
             return Ok(CocktailDtos);
-        } */
+        } 
 
         [ResponseType(typeof(CocktailDto))]
         [HttpGet]
@@ -188,6 +188,7 @@ namespace PassionProject.Controllers
 
         [ResponseType(typeof(Cocktail))]
         [HttpPost]
+        [Route("api/cocktaildata/DeleteCocktail/{id}")]
         public IHttpActionResult DeleteCocktail(int id)
         {
             Cocktail cocktail = db.Cocktails.Find(id);
@@ -198,10 +199,22 @@ namespace PassionProject.Controllers
             }
 
             db.Cocktails.Remove(cocktail);
-            db.SaveChanges();
 
-            return Ok();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Debug.WriteLine("Exception occurred: " + ex.Message);
+                // Return an appropriate error response
+                return InternalServerError(ex);
+            }
+
+            return Ok(cocktail); // Return the deleted cocktail
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -15,9 +15,9 @@ namespace PassionProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //GET: api/bartenderdata/listbartenders
+        // GET: api/bartenderdata/listbartenders
         [HttpGet]
-        [ResponseType(typeof(BartenderDto))]
+        [ResponseType(typeof(IEnumerable<BartenderDto>))]
         public IHttpActionResult ListBartenders()
         {
             List<Bartender> Bartenders = db.Bartenders.ToList();
@@ -35,7 +35,7 @@ namespace PassionProject.Controllers
             return Ok(BartenderDtos);
         }
 
-        //GET: api/BartenderData/FindBartender/id
+        // GET: api/BartenderData/FindBartender/id
         [HttpGet]
         [Route("api/bartenderdata/findbartender/{id}")]
         [ResponseType(typeof(BartenderDto))]
@@ -61,10 +61,11 @@ namespace PassionProject.Controllers
             return Ok(BartenderDto);
         }
 
-        //POST: api/bartenderdata/updateBartender/id
+        // POST: api/bartenderdata/updateBartender/id
         [HttpPost]
+        [Route("api/bartenderdata/updatebartender/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult UpdateBartender(int id, Bartender b)
+        public IHttpActionResult UpdateBartender(int id, [FromBody] Bartender b)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +74,6 @@ namespace PassionProject.Controllers
 
             if (id != b.BartenderId)
             {
-
                 return BadRequest();
             }
 
@@ -97,11 +97,11 @@ namespace PassionProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        //POST: api/bartenderdata/addbartender
-        //FORM DATA: Bartender JSON object
+        // POST: api/bartenderdata/addbartender
         [HttpPost]
+        [Route("api/bartenderdata/addbartender")]
         [ResponseType(typeof(Bartender))]
-        public IHttpActionResult AddBartender(Bartender Bartender)
+        public IHttpActionResult AddBartender([FromBody] Bartender Bartender)
         {
             if (!ModelState.IsValid)
             {
@@ -113,9 +113,9 @@ namespace PassionProject.Controllers
             return CreatedAtRoute("DefaultApi", new { id = Bartender.BartenderId }, Bartender);
         }
 
-        //POST: api/BartenderData/DeleteBartender/id
-        //FORM DATA (empty)
+        // POST: api/BartenderData/DeleteBartender/id
         [HttpPost]
+        [Route("api/bartenderdata/deletebartender/{id}")]
         [ResponseType(typeof(Bartender))]
         public IHttpActionResult DeleteBartender(int id)
         {

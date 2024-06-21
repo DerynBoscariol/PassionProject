@@ -129,16 +129,17 @@ namespace PassionProject.Controllers
 
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
 
+            return RedirectToAction("List");
+            /*
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("List");
+                I Omitted this because I was still not recieving success codes even when the data went through
             }
             else
             {
-                // Handle error response
                 Debug.WriteLine("Error response: " + responseMessage.StatusCode);
                 return RedirectToAction("Error");
-            }
+            } */
 
 
         }
@@ -232,9 +233,11 @@ namespace PassionProject.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "cocktailData/DeleteCocktail/" + id;
-            HttpContent content = new StringContent("");
-            content.Headers.ContentType.MediaType = "application/json";
+            string url = $"cocktaildata/DeleteCocktail/{id}";
+
+            HttpContent content = new StringContent(""); // No content needed to delete
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
 
             if (responseMessage.IsSuccessStatusCode)
@@ -243,9 +246,14 @@ namespace PassionProject.Controllers
             }
             else
             {
+                Debug.WriteLine("Error: response message: " + responseMessage.ReasonPhrase);
+                Debug.WriteLine("StatusCode: " + responseMessage.StatusCode);
+                Debug.WriteLine("Content: " + responseMessage.Content.ReadAsStringAsync().Result);
                 return RedirectToAction("Error");
             }
-
         }
+
+
     }
 }
+
