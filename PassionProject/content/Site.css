@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bold {
+    font-weight:600;
+}
+
+.navbar-nav {
+    float: left;
+    display: flex;
+    margin: 0;
+    gap: 40px !important;
+}

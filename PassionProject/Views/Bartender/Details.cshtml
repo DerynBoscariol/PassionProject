@@ -6,9 +6,9 @@
 }
 
 <h1>Bartender Details</h1>
-<h3><a href="~/Bartender/Edit/@Model.SelectedBartender.BartenderId">Update Bartender</a></h3>
-<h3><a href="~/Bartender/DeleteConfirm/@Model.SelectedBartender.BartenderId">Delete Bartender</a></h3>
-<h4><a href="~/Bartender/List"> Return to Bartender List</a></h4>
+<h3><a class="btn-primary"href="~/Bartender/Edit/@Model.SelectedBartender.BartenderId">Update Bartender</a></h3>
+<h3><a class="btn-danger"href="~/Bartender/DeleteConfirm/@Model.SelectedBartender.BartenderId">Delete Bartender</a></h3>
+<h4><a class="btn-info"href="~/Bartender/List"> Return to Bartender List</a></h4>
 
 @if (Model.SelectedBartender != null)
 {
