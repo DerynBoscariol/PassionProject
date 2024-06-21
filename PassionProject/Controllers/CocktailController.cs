@@ -63,14 +63,6 @@ namespace PassionProject.Controllers
 
             ViewModel.SelectedCocktail = SelectedCocktail;
 
-            //Show bartender who made the drink
-
-            string burl = "https://localhost:44307/api/BartenderData/FindBartender/" + SelectedCocktail.BartenderId;
-            responseMessage = client.GetAsync(burl).Result;
-            BartenderDto BartenderCreated = responseMessage.Content.ReadAsAsync<BartenderDto>().Result;
-
-            ViewModel.BartenderCreated = BartenderCreated;
-
             return View(ViewModel);
 
         }

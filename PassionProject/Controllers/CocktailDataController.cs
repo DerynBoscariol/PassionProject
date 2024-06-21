@@ -85,7 +85,7 @@ namespace PassionProject.Controllers
             return Ok(CocktailDtos);
         } 
 
-        [ResponseType(typeof(Cocktail))]
+        [ResponseType(typeof(CocktailDto))]
         [HttpGet]
         [Route("api/CocktailData/FindCocktail/{id}")]
         public IHttpActionResult FindCocktail(int id)

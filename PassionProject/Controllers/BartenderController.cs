@@ -113,6 +113,7 @@ namespace PassionProject.Controllers
         }
 
         //POST: bartender/update/id
+        [HttpPost]
         public ActionResult Update(int id, Bartender Bartender) 
         {
             string url = "bartenderdata/updateBartender/" + id;

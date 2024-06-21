@@ -8,6 +8,6 @@ namespace PassionProject.Models.ViewModels
     public class DetailsCocktail
     {
         public CocktailDto SelectedCocktail { get; set; }
-        public BartenderDto BartenderCreated { get; set; }
+       // public BartenderDto BartenderCreated { get; set; }
     }
 }
