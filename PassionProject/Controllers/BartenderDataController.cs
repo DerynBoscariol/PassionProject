@@ -1,4 +1,5 @@
-﻿using PassionProject.Models;
+﻿using Microsoft.AspNet.Identity;
+using PassionProject.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -15,6 +16,13 @@ namespace PassionProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// recieves a GET request and returns an http response and a list object of all the bartenders in the system
+        /// </summary>
+        /// <example>
+        /// curl https://localhost:44307/api/bartenderdata/listbartenders -->
+        /// [{"BartenderId":3,"FirstName":"Alex","LastName":"Turner","Email":"alexturner@example.com","NumDrinks":4},{"BartenderId":4,"FirstName":"Noah","LastName":"Kahan","Email":"noahkahan@example.com","NumDrinks":3},{ "BartenderId":5,"FirstName":"Max","LastName":"Kerman","Email":"maxKerman@example.com","NumDrinks":5},{ "BartenderId":6,"FirstName":"Hannah","LastName":"Wicklund","Email":"hannahw@gmail.com","NumDrinks":2}]
+        /// </example>
         // GET: api/bartenderdata/listbartenders
         [HttpGet]
         [ResponseType(typeof(IEnumerable<BartenderDto>))]
@@ -34,7 +42,17 @@ namespace PassionProject.Controllers
 
             return Ok(BartenderDtos);
         }
-
+        /// <summary>
+        /// Receives  BartenderId and returns a http response with all information about said bartender
+        /// </summary>
+        /// <param name="BartenderId">Unique integer to differentiate bartenders</param>
+        /// <returns>
+        /// Ok Http response and BartenderDto
+        /// </returns>
+        /// <example>
+        /// curl https://localhost:44307/api/bartenderdata/findbartender/3  --->
+        /// {"BartenderId":3,"FirstName":"Alex","LastName":"Turner","Email":"alexturner@example.com","NumDrinks":4}
+        /// </example>
         // GET: api/BartenderData/FindBartender/id
         [HttpGet]
         [Route("api/bartenderdata/findbartender/{id}")]
@@ -60,7 +78,12 @@ namespace PassionProject.Controllers
 
             return Ok(BartenderDto);
         }
-
+        /// <summary>
+        /// Recieves a BartenderId and sends updated data to a database then returns and http response 
+        /// </summary>
+        /// <param name="id"> Id of Bartender user is searching for</param>
+        /// <param name="b"> alias for the bartenderobject in the body of the Http response</param>
+        /// <returns>HttpStatus code</returns>
         // POST: api/bartenderdata/updateBartender/id
         [HttpPost]
         [Route("api/bartenderdata/updatebartender/{id}")]
@@ -96,7 +119,13 @@ namespace PassionProject.Controllers
             }
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Recieves a bartender object and sends it to the database
+        /// </summary>
+        /// <param name="Bartender">The bartender being added to the database</param>
+        /// <returns>
+        /// A new bartender id for the new bartender object
+        /// </returns>
         // POST: api/bartenderdata/addbartender
         [HttpPost]
         [Route("api/bartenderdata/addbartender")]
@@ -112,7 +141,11 @@ namespace PassionProject.Controllers
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = Bartender.BartenderId }, Bartender);
         }
-
+        /// <summary>
+        /// Recieves a bartenderId and sends a post request to delete that bartender from the database
+        /// </summary>
+        /// <param name="id">Id of bartender being deleted</param>
+        /// <returns>an Ok Http response</returns>
         // POST: api/BartenderData/DeleteBartender/id
         [HttpPost]
         [Route("api/bartenderdata/deletebartender/{id}")]
@@ -138,7 +171,7 @@ namespace PassionProject.Controllers
             }
             base.Dispose(disposing);
         }
-
+        //Checking to see if a given bartender exists in the database
         private bool BartenderExists(int id)
         {
             return db.Bartenders.Count(b => b.BartenderId == id) > 0;
