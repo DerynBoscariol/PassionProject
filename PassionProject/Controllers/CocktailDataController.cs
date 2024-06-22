@@ -18,8 +18,8 @@ namespace PassionProject.Controllers
         /// Content: all cocktails in the database</returns>
         /// <example>
         /// GET: /api/CocktailData/ListCocktails ->
-        /// [{"drinkId" : 3, "firstName" : "Alex", "lastName" : "Turner" , "email" : "alexturner@example.com" , "numDrinks" : 4 "lastDrinkPosted" : 2020-07-21},
-        /// {"bartenderId" : 4, "firstName" : "Noah", "lastName" : "Kahan" , "email" : "noahkahan@example.com" , "numDrinks" : 3 "lastDrinkPosted" : 2024-03-18}]
+        /// [{"drinkId" : 3, "DrinkName" : "Vodka Cran", "DrinkType" : "Bar Rail" , "DrinkRecipe" : "Pour 1 oz of vodka over ice, top off with cranberry juice" , "LiqIn" : "Vodka", "MixIn" : "Cranberry Juice", "bartenderId" : 4, "firstName" : "Noah", "lastName" : "Kahan"},
+        /// {"drinkId" : 4, "DrinkName" : "Gin and Tonic", "DrinkType" : "Bar Rail" , "DrinkRecipe" : "Pour 1 oz of gin over ice, top off with tonic water" , "LiqIn" : "Gin", "MixIn" : "Tonic Water", "bartenderId" : 7, "firstName" : "Max", "lastName" : "Kerman"}]
         /// </example>
         [HttpGet]
         [ResponseType(typeof(CocktailDto))]
@@ -51,12 +51,14 @@ namespace PassionProject.Controllers
         /// Gathers information about all Cocktails related to a specific bartenderId
         /// </summary>
         /// <returns>
-        /// HEADER: 200 (OK)
-        /// CONTENT: all cocktails in database, including their bartenders matched with a specific bartenderId
+        /// Https response containing all the cocktails the provided bartender has made
         /// </returns>
         /// <param name="id">bartenderId</param>
         /// <example>
         /// GET: api/CocktailData/ListCocktailsByBartender/2
+        /// HEADER: 200 (OK)
+        /// CONTENT: [{"drinkId" : 3, "DrinkName" : "Vodka Cran", "DrinkType" : "Bar Rail" , "DrinkRecipe" : "Pour 1 oz of vodka over ice, top off with cranberry juice" , "LiqIn" : "Vodka", "MixIn" : "Cranberry Juice", "bartenderId" : 2, "firstName" : "Noah", "lastName" : "Kahan"},
+        /// {"drinkId" : 4, "DrinkName" : "Gin and Tonic", "DrinkType" : "Bar Rail" , "DrinkRecipe" : "Pour 1 oz of gin over ice, top off with tonic water" , "LiqIn" : "Gin", "MixIn" : "Tonic Water", "bartenderId" : 2, "firstName" : "Noah", "lastName" : "Kahan"}]
         /// </example>
 
         [HttpGet]
@@ -83,6 +85,18 @@ namespace PassionProject.Controllers
             return Ok(CocktailDtos);
         } 
 
+        /// <summary>
+        /// Finds a cocktail in the database according to the given id
+        /// </summary>
+        /// <returns>
+        /// Http response with the details of a specific cocktail
+        /// </returns>
+        /// <param name="id">bartenderId</param>
+        /// <example>
+        /// GET: api/CocktailData/findcocktail/3
+        /// HEADER: 200 (OK)
+        /// CONTENT: {"drinkId" : 3, "DrinkName" : "Vodka Cran", "DrinkType" : "Bar Rail" , "DrinkRecipe" : "Pour 1 oz of vodka over ice, top off with cranberry juice" , "LiqIn" : "Vodka", "MixIn" : "Cranberry Juice", "bartenderId" : 4, "firstName" : "Noah", "lastName" : "Kahan"}
+        /// </example>
         [ResponseType(typeof(CocktailDto))]
         [HttpGet]
         [Route("api/CocktailData/FindCocktail/{id}")]
