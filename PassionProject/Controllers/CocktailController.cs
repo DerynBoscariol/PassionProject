@@ -15,7 +15,7 @@ namespace PassionProject.Controllers
     {
         private static readonly HttpClient client = new HttpClient();
         private JavaScriptSerializer serializer = new JavaScriptSerializer();
-
+        //Setting up the Http Client
         static CocktailController()
         {
             HttpClientHandler handler = new HttpClientHandler()
@@ -28,94 +28,115 @@ namespace PassionProject.Controllers
             client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44307/api/");
         }
-
-
-        // GET: Cocktail/List
+        /// <summary>
+        /// Displays view with a list of all CocktailDtos in the system
+        /// </summary>
+        /// GET: Localhost:xxxx/cocktail/list
+        /// <returns> Dynamically rendered webpage using List.cshtml </returns>
         public ActionResult List()
-        {
+        {   
+            //creating new list of CocktailDtos
             List<CocktailDto> cocktailDtos = new List<CocktailDto>();
 
             try
-            {
+            {    //attempting to contact data api to retrieve the list of cocktails
                 string url = "cocktaildata/cocktaillist";
                 HttpResponseMessage responseMessage = client.GetAsync(url).Result;
-
+                
                 if (responseMessage.IsSuccessStatusCode)
-                {
+                {    //if successful, the result is deserialized into the CocktailDto list
                     string responseData = responseMessage.Content.ReadAsStringAsync().Result;
                     cocktailDtos = JsonConvert.DeserializeObject<List<CocktailDto>>(responseData);
                 }
                 else
-                {
+                {    //if unsuccessful, the following error will be displayed
                     ViewBag.ErrorMessage = "Failed to retrieve cocktails from the API.";
                 }
             }
             catch (Exception ex)
-            {
+            {    //if an exception is caught, the following error will be displayed
                 ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
             }
-
+            //Retruning the List view, populated with cocktailDtos
             return View(cocktailDtos);
         }
-
-        //GET: Cocktail/Details/id
+        
+        /// <summary>
+        /// Displays view with the details of a specific cocktail
+        /// </summary>
+        /// GET: Localhost:xxxx/cocktail/details/{id}
+        /// <param name="id"> The id of the cocktail selected </param>
+        /// <returns> Dynamically rendered webpage using Details.cshtml and the information about the selected cocktail</returns>
 
         public ActionResult Details(int id)
-        {
+        {    
+            //creating a new instance of the DetailsCocktail viewmodel
             DetailsCocktail viewModel = new DetailsCocktail();
 
             try
-            {
+            {    //attempting to contact the api to receive the cocktail information related to the id
                 string url = "cocktaildata/findcocktail/" + id;
                 HttpResponseMessage responseMessage = client.GetAsync(url).Result;
-
+                 
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    //if successful, the response is deserialized and stored in the SelectedCocktail variable and assigned to the same variable with in the view model
                     string responseData = responseMessage.Content.ReadAsStringAsync().Result;
                     CocktailDto selectedCocktail = JsonConvert.DeserializeObject<CocktailDto>(responseData);
 
                     viewModel.SelectedCocktail = selectedCocktail;
                 }
                 else if (responseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
+                {    //if there is not cocktail with that id, the following message will be displayed
                     ViewBag.ErrorMessage = "Cocktail not found.";
                 }
                 else
-                {
+                {    //if there are any other errors, this message will be displayed
                     ViewBag.ErrorMessage = "Failed to retrieve cocktail details.";
                 }
             }
             catch (Exception ex)
-            {
+            {    //if an exception is caught, this error will be displayed
                 ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
             }
-
+            //returning the Details view populated with the new instance of the DetailsCocktail view model
             return View(viewModel);
         }
 
 
         public ActionResult Error()
-        {
+        {   //if there is an error displaying the view model, the user will be redirected to the error page
 
             return View();
         }
-        //GET: Cocktail/New
+
+        /// <summary>
+        /// Displays the New view
+        /// </summary>
+        /// GET: Localhost:xxxx/cocktail/new
+        /// <returns> Dynamically rendered webpage including a form where a user can input information to create a new cocktail, including a dropdown menu containing all the bartenders</returns>
+
         public ActionResult New()
         {
-            //information about all bartenders in the system.
+            //gathering information about all bartenders in the system.
             //GET api/bartenderdata/listbartenders
             string url = "bartenderdata/listbartenders";
             HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             IEnumerable<BartenderDto> BartenderOptions = responseMessage.Content.ReadAsAsync<IEnumerable<BartenderDto>>().Result;
             Debug.WriteLine("New method successful");
+            // Returning the New view with BartenderOptions populating the select bartender dropdown menu
             return View(BartenderOptions);
         }
 
-        //POST: Cocktail/Create
+        /// <summary>
+        /// Serializes the Cocktail Object created from the form data and sends it to the api 
+        /// </summary>
+        /// POST: Localhost:xxxx/cocktail/Create
+        /// <param name="cocktail"> a new instance of the Cocktail object created with information input by the user </param>
+        /// <returns> Redirection to the cocktail List page</returns>
         [HttpPost]
         public ActionResult Create(Cocktail cocktail)
         {
-
 
             Debug.WriteLine("Json payload: ");
             Debug.WriteLine(cocktail.DrinkName);
@@ -130,34 +151,27 @@ namespace PassionProject.Controllers
             HttpResponseMessage responseMessage = client.PostAsync(url, content).Result;
 
             return RedirectToAction("List");
-            /*
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                I Omitted this because I was still not recieving success codes even when the data went through
-            }
-            else
-            {
-                Debug.WriteLine("Error response: " + responseMessage.StatusCode);
-                return RedirectToAction("Error");
-            } */
-
 
         }
 
+        /// <summary>
+        /// Displays a view of a form populated with the current data of a cocktail that the user would like to update
+        /// </summary>
+        /// GET: Localhost:xxxx/cocktail/edit/{id}
+        /// <param name="id"> The id of the cocktail selected </param>
+        /// <returns> Dynamically rendered webpage using Edit.cshtml and the information about the selected cocktail</returns>
 
-        //GET: cocktail/edit/id
         public ActionResult Edit(int id)
         {
             try
             {
                 UpdateCocktail viewModel = new UpdateCocktail();
 
-                // Get selected cocktail by ID
+                // Get selected cocktail information by ID
                 string cocktailUrl = "cocktaildata/findcocktail/" + id;
                 HttpResponseMessage cocktailResponse = client.GetAsync(cocktailUrl).Result;
                 if (!cocktailResponse.IsSuccessStatusCode)
                 {
-                    // Handle unsuccessful response
                     Debug.WriteLine("Error fetching cocktail: " + cocktailResponse.StatusCode);
                     return RedirectToAction("Error");
                 }
@@ -170,7 +184,6 @@ namespace PassionProject.Controllers
                 HttpResponseMessage bartendersResponse = client.GetAsync(bartendersUrl).Result;
                 if (!bartendersResponse.IsSuccessStatusCode)
                 {
-                    // Handle unsuccessful response
                     Debug.WriteLine("Error fetching bartenders: " + bartendersResponse.StatusCode);
                     return RedirectToAction("Error");
                 }
@@ -182,13 +195,19 @@ namespace PassionProject.Controllers
             }
             catch (Exception ex)
             {
-                // Log exception or handle it accordingly
+                
                 Debug.WriteLine("Exception occurred: " + ex.Message);
                 return RedirectToAction("Error");
             }
         }
-
-        //POST: Cocktail/Update/id
+        /// <summary>
+        /// Serializes the Cocktail Object (updated with information from the user) and sends it to the api 
+        /// </summary>
+        /// POST: Localhost:xxxx/cocktail/Update
+        /// <param name="id"> the id number of the coocktail which will be updated </param>
+        /// <param name="cocktail"> a new instance of the Cocktail object updated with information input by the user </param>
+        /// <returns> Redirection to the cocktail List page</returns>
+        /// POST: Cocktail/Update/id
         [HttpPost]
         [Route("api/cocktaildata/UpdateCocktail/{id}")]
         public ActionResult Update(int id, Cocktail cocktail)
@@ -220,8 +239,13 @@ namespace PassionProject.Controllers
             }
         }
 
+        /// <summary>
+        /// Displays a view of a page confirming that the user wants to delete a selected cocktail
+        /// </summary>
+        /// GET: Localhost:xxxx/cocktail/DeleteConfirm/id
+        /// <param name="id"> The id of the cocktail selected </param>
+        /// <returns> Dynamically rendered webpage using DeleteConfirm.cshtml and information about the selected cocktail</returns>
 
-        //GET: Cocktail/Delete/id
         public ActionResult DeleteConfirm(int id)
         {
             string url = "cocktaildata/findcocktail/" + id;
@@ -230,6 +254,13 @@ namespace PassionProject.Controllers
             return View(selectedcocktail);
         }
 
+        /// <summary>
+        /// sends the id of a cocktail to the api to delete it 
+        /// </summary>
+        /// POST: Localhost:xxxx/cocktail/Delete
+        /// <param name="id"> the id number of the cocktail which will be deleted </param>
+        /// <returns> Redirection to the cocktail List page</returns>
+        /// POST: Cocktail/Update/id
         [HttpPost]
         public ActionResult Delete(int id)
         {
